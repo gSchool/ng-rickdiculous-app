@@ -8,6 +8,9 @@ HTTP Client allows your Angular application to communicate with other applicatio
 
 HTTP Client is a built-in service for sending and receiving data.
 
+The API offers a REST backend that can be used to access the data:
+* [Rick and Morty API Official](https://rickandmortyapi.com/documentation/#rest)
+
 ## Topics
 
 - CRUD and API anatomy

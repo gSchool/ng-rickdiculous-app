@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-form',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
+  searchForm: FormGroup;
+  @Output() searchEvent = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.searchForm = this.fb.group({
+      query: ''
+    });
+  }
+
+  search(): void {
+    this.searchEvent.emit(this.searchForm.controls.query.value);
   }
 
 }

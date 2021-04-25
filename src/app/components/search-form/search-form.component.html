@@ -1,1 +1,8 @@
-<p>search-form works!</p>
+<form (ngSubmit)="search()" [formGroup]="searchForm">
+  <label for="searchField">
+    <input type="text" name="query" id="searchField">
+  </label>
+  <label for="submitSearch">
+    <input type="submit" id="submitSearch" value="Search">
+  </label>
+</form>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
     SearchFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [LandingPageComponent]
