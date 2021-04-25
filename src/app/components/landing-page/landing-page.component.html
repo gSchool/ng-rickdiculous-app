@@ -1,4 +1,6 @@
 <div class="container">
   <h1>{{ title }}</h1>
-  <app-search-form></app-search-form>
+<!--  Output search query to even handler-->
+  <app-search-form (searchEvent)="handleSearch($event)"></app-search-form>
+  <app-episodes-list></app-episodes-list>
 </div>

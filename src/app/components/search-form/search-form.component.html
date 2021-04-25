@@ -1,6 +1,6 @@
 <form (ngSubmit)="search()" [formGroup]="searchForm">
   <label for="searchField">
-    <input type="text" name="query" id="searchField">
+    <input type="text" name="query" id="searchField" formControlName="query">
   </label>
   <label for="submitSearch">
     <input type="submit" id="submitSearch" value="Search">

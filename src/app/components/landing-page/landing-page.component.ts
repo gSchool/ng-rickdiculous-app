@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Episode } from '../../models/episode';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class LandingPageComponent {
   title = 'Rickfans of Mortydom';
+  episodes: Episode[] = [];
+
+  handleSearch(event: string): void {
+    console.log('Search event', event);
+  }
 }
