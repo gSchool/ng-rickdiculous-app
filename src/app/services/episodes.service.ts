@@ -14,7 +14,8 @@ interface ApiRicksponse {
 })
 export class EpisodesService {
   private url = 'https://rickandmortyapi.com/api/episode/';
-  private episodes: Episode[] = [];
+  // tslint:disable-next-line:variable-name
+  private _episodes: Episode[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -32,4 +33,15 @@ export class EpisodesService {
     return this.http.get<ApiRicksponse>(this.url + episodeId);
   }
 
+  findByName(episodeName: string): Episode {
+    return this._episodes.filter(episode => episode.name === episodeName)[0];
+  }
+
+  get episodes(): Episode[] {
+    return this._episodes;
+  }
+
+  set episodes(episodes: Episode[]) {
+    this._episodes = episodes;
+  }
 }
