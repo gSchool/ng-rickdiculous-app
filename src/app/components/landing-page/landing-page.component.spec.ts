@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EpisodesListComponent } from '../episodes-list/episodes-list.component';
 import { EpisodesService } from '../../services/episodes.service';
 import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
-import MockEpisodesService from '../../utils/MockEpisodesService';
+import MockEpisodesService from '../../services/MockEpisodesService';
 
 
 describe('LandingPage', () => {
