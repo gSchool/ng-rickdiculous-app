@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Episode } from '../../models/episode';
 
 @Component({
   selector: 'app-episodes-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./episodes-list.component.css']
 })
 export class EpisodesListComponent implements OnInit {
+  episodes: Episode[] = [];
 
   constructor() { }
 
