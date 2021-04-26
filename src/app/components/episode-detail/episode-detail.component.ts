@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Episode} from '../../models/episode';
+import { Component, Input, OnInit } from '@angular/core';
+import { Episode } from '../../models/episode';
 
 @Component({
   selector: 'app-episode-detail',
