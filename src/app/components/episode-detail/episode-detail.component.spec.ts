@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EpisodeDetailComponent } from './episode-detail.component';
 import { Episode } from '../../models/episode';
@@ -32,6 +32,10 @@ describe('EpisodeDetailComponent', () => {
   it('should render an episode', () => {
     expect(component.episode).toBeTruthy();
     expect(html.querySelector('h3').textContent).toEqual(episode.name);
+  });
+
+  it('should link name to details page', () => {
+    expect(html.querySelector('h3 a').getAttribute('href')).toContain('episode/');
   });
 
   // Test utils ------------------------
