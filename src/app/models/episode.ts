@@ -2,8 +2,9 @@ export class Episode {
   id: number;
   episode: string;
   name: string;
-  airDate: Date;
+  airDate: string;
   characters: [];
   url?: string;
-  created?: Date;
+  created?: string;
+
 }

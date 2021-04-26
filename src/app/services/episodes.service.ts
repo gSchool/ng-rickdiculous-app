@@ -13,7 +13,7 @@ interface ApiRicksponse {
   providedIn: 'root'
 })
 export class EpisodesService {
-  private url = 'https://rickandmortyapi.com/api/episode';
+  private url = 'https://rickandmortyapi.com/api/episode/';
   private episodes: Episode[] = [];
 
   constructor(private http: HttpClient) { }
@@ -27,12 +27,9 @@ export class EpisodesService {
         )
       );
   }
+
+  getById(episodeId: number): Observable<any> {
+    return this.http.get<ApiRicksponse>(this.url + episodeId);
+  }
+
 }
-
-
-// .pipe(
-//   tap(
-//     data => console.log(data),
-//     err => console.error('Episode.all()', err)
-//   )
-// )

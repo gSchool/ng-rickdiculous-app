@@ -2,8 +2,9 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EpisodesService } from './episodes.service';
 import { of } from 'rxjs';
+import { Episode } from '../models/episode';
 
-const episodes = [{ name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}];
+const episodes: Episode[] = [{ name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}];
 
 
 describe('EpisodesService', () => {
@@ -25,6 +26,15 @@ describe('EpisodesService', () => {
 
     service.all().subscribe(data => {
       expect(data).toEqual(episodes);
+    });
+  });
+
+  it('should get an episode by id', () => {
+    const episode: Episode = episodes[0];
+    httpClientSpy.get.and.returnValue(of(episode));
+
+    service.getById(episode.id).subscribe(data => {
+      expect(data).toEqual(episode);
     });
   });
 });

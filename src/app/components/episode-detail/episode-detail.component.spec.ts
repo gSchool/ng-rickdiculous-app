@@ -40,7 +40,7 @@ describe('EpisodeDetailComponent', () => {
     episode = new Episode();
     episode.name = 'Test and Rorty';
     episode.episode = 'TEST01';
-    episode.airDate = new Date('December 2, 2013');
+    episode.airDate = 'December 2, 2013';
     return episode;
   }
 });
