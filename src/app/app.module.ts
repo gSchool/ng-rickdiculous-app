@@ -6,6 +6,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import {ReactiveFormsModule} from '@angular/forms';
 import { EpisodesListComponent } from './components/episodes-list/episodes-list.component';
 import { EpisodeDetailComponent } from './components/episode-detail/episode-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EpisodeDetailComponent } from './components/episode-detail/episode-deta
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [LandingPageComponent]

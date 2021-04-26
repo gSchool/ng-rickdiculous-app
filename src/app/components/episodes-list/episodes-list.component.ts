@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Episode } from '../../models/episode';
+import { EpisodesService } from '../../services/episodes.service';
 
 @Component({
   selector: 'app-episodes-list',
@@ -9,9 +10,10 @@ import { Episode } from '../../models/episode';
 export class EpisodesListComponent implements OnInit {
   episodes: Episode[] = [];
 
-  constructor() { }
+  constructor(private service: EpisodesService) { }
 
   ngOnInit(): void {
+    this.service.all().subscribe(episodes => this.episodes = episodes.results );
   }
 
 }

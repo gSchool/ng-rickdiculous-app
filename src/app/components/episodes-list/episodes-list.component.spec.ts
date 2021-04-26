@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EpisodesListComponent } from './episodes-list.component';
+import { EpisodesService } from '../../services/episodes.service';
+import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
+import MockEpisodesService from '../../utils/MockEpisodesService';
 
 describe('EpisodesListComponent', () => {
   let component: EpisodesListComponent;
@@ -9,7 +12,8 @@ describe('EpisodesListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EpisodesListComponent ]
+      declarations: [ EpisodesListComponent, EpisodeDetailComponent ],
+      providers: [ { provide: EpisodesService, useClass: MockEpisodesService }]
     })
     .compileComponents();
   }));
@@ -18,7 +22,7 @@ describe('EpisodesListComponent', () => {
     fixture = TestBed.createComponent(EpisodesListComponent);
     component = fixture.componentInstance;
     html = fixture.nativeElement;
-    fixture.detectChanges();
+    fixture.autoDetectChanges();
   });
 
   it('should create', () => {
@@ -31,5 +35,9 @@ describe('EpisodesListComponent', () => {
 
   it('should render each episode', () => {
     expect(html.querySelector('app-episode-detail')).toBeDefined();
+  });
+
+  it('should fetch episodes from service', () => {
+    expect(component.episodes.length).toEqual(1);
   });
 });

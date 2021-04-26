@@ -27,3 +27,22 @@ The API offers a REST backend that can be used to access the data:
 - Detail pages for characters
 - Detail pages for locations
 - Favorites list
+
+## Stories and AC
+
+The stories for episodes apply to characters and locations as well. Start with Episodes then implement location and characters once you get into a good workflow with`HTTPClient` and services.
+
+**Episodes**
+
+As a user, I can browse the episodes of Rick and Morty so that I can read about each one.
+```gherkin
+When I visit the home page
+Then I can see a list of Rick and Morty episodes.
+
+Given a list of episodes
+When I select one episode
+Then I can view the details page for it.
+
+When I view the details page for an episode
+Then I can see more details and the characters featured in it.
+```

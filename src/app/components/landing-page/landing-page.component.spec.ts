@@ -3,6 +3,10 @@ import { LandingPageComponent } from './landing-page.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EpisodesListComponent } from '../episodes-list/episodes-list.component';
+import { EpisodesService } from '../../services/episodes.service';
+import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
+import MockEpisodesService from '../../utils/MockEpisodesService';
+
 
 describe('LandingPage', () => {
   let component: LandingPageComponent;
@@ -12,9 +16,11 @@ describe('LandingPage', () => {
   beforeEach(waitForAsync( () => {
     TestBed.configureTestingModule({
       declarations: [
-        LandingPageComponent, SearchFormComponent, EpisodesListComponent
+        LandingPageComponent, SearchFormComponent,
+        EpisodesListComponent, EpisodeDetailComponent
       ],
-      imports: [ ReactiveFormsModule ]
+      imports: [ ReactiveFormsModule ],
+      providers: [ { provide: EpisodesService, useClass: MockEpisodesService }]
     }).compileComponents();
     fixture = TestBed.createComponent(LandingPageComponent);
     component = fixture.componentInstance;
@@ -33,7 +39,7 @@ describe('LandingPage', () => {
   });
 
   it('should render episode list component', () => {
-    expect(html.querySelector('app-episodes-list'));
+    expect(html.querySelector('app-episodes-list')).toBeTruthy();
   });
 
   it('should handle search event', () => {
