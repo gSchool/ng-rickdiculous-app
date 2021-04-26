@@ -16,14 +16,18 @@ export class EpisodesService {
   private url = 'https://rickandmortyapi.com/api/episode/';
   // tslint:disable-next-line:variable-name
   private _episodes: Episode[] = [];
+  public info: {};
 
   constructor(private http: HttpClient) { }
 
-  all(): Observable<any>{
+  all(): Observable<ApiRicksponse>{
     return this.http.get<ApiRicksponse>(this.url)
       .pipe(
         tap(
-          data => this.episodes = data.results,
+          data => {
+            this.episodes = data.results;
+            this.info = data.info;
+          },
           err => console.error('Episode.all()', err)
         )
       );
@@ -35,6 +39,10 @@ export class EpisodesService {
 
   findByName(episodeName: string): Episode {
     return this._episodes.filter(episode => episode.name === episodeName)[0];
+  }
+
+  getByName(episodeName: string): Observable<any> {
+    return this.http.get<ApiRicksponse>(`${this.url}/?=${episodeName}`);
   }
 
   get episodes(): Episode[] {

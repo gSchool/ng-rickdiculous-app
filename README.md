@@ -1,4 +1,4 @@
-# Rickfans of Mortydom
+# Rickdiculous Mortydom
 
 You're building a fan site for Rick and Morty lovers. The application will use data from an open source API. Your task is to use that data to design the app.
 
@@ -37,12 +37,12 @@ The stories for episodes apply to characters and locations as well. Start with E
 As a user, I can browse the episodes of Rick and Morty so that I can read about each one.
 ```gherkin
 When I visit the home page
-Then I can see a list of Rick and Morty episodes.
+Then I can see a list of Rick and Morty episodes thumbnails and links.
 
 Given a list of episodes
 When I select one episode
 Then I can view the details page for it.
 
 When I view the details page for an episode
-Then I can see more details and the characters featured in it.
+Then I can see all episode information and the characters featured in it.
 ```
