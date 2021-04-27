@@ -15,4 +15,10 @@ describe('TestingService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  // it('should have a model for Episode', () => {
+  //   const episodeModel: Episode = {
+  //     info
+  //   }
+  // });
 });

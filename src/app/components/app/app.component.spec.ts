@@ -38,9 +38,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render search form', () => {
-  });
-
   it('should load home page initially', fakeAsync(() => {
     router.navigate(['']);
     tick();
