@@ -12,7 +12,7 @@ interface Episode{
   providedIn: 'root'
 })
 
-export class TestingService {
+export class RickAndMortyService {
   baseAPI = 'https://rickandmortyapi.com/api';
   results: [] = [];
 
