@@ -35,7 +35,7 @@ describe('EpisodeDetailComponent', () => {
   });
 
   it('should link name to details page', () => {
-    expect(html.querySelector('h3 a').getAttribute('href')).toContain('episode/');
+    expect(html.querySelector('h3 a').getAttribute('routerlink')).toContain('episode');
   });
 
   // Test utils ------------------------

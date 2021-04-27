@@ -38,6 +38,10 @@ describe('LandingPage', () => {
     expect(html.querySelector('app-search-form')).toBeTruthy();
   });
 
+  it('should render navigation menu', () => {
+
+  });
+
   it('should render episode list component', () => {
     expect(html.querySelector('app-episodes-list')).toBeTruthy();
   });
