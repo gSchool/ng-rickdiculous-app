@@ -5,6 +5,7 @@ import {RickAndMortyService} from '../rickandmorty.service';
 import { HttpClientModule } from '@angular/common/http';
 import {Episode} from '../episode';
 import {of} from 'rxjs';
+import { MockRMServiceService } from '../mock-rmservice.service';
 
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
@@ -25,16 +26,14 @@ describe('EpisodeListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
       declarations: [ EpisodeListComponent ],
+      providers: [{provide: RickAndMortyService, useClass: MockRMServiceService}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    rmService = new RickAndMortyService(httpClientSpy as any);
     fixture = TestBed.createComponent(EpisodeListComponent);
     component = fixture.componentInstance;
-    httpClientSpy.get.and.returnValue(of(expectedResponse));
     htmlElement = fixture.nativeElement;
     fixture.autoDetectChanges();
   });
@@ -43,21 +42,9 @@ describe('EpisodeListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should inject rick and morty service into list component', () => {
-    expect(rmService).toBeTruthy();
-  });
-
-  it('should obtain a list of movies from the service', () => {
-    rmService.buildEpisodes();
-    const epList: Episode[] = rmService.episodes;
-    expect(epList.length).toBeGreaterThan(0);
-    //expect().toBeResolvedTo();
-  });
-
   it('should render a collection of episode elements', () => {
-    //component.aList = [{name : "1", id: 1, episode: "1"}];
-    // rmService.buildEpisodes();
-    // fixture.detectChanges();
+    fixture.detectChanges();
+    expect(component.aList.length).toEqual(1);
     expect(htmlElement.querySelectorAll('app-episode').length).toBeGreaterThan(0);
   });
 });

@@ -1,7 +1,12 @@
-.card{
-    /* width: 18rem; */
+.card {
+    width: 20rem;
+    /* height: 30rem; */
 }
 img {
-    width:300;
-    height:300;
+    width:auto;
+    height:auto;
+}
+.img-thumbnail{
+    border-color: grey;
+    background-color:lightslategray;
 }

@@ -1,5 +1,5 @@
-<div class="container">
-<div *ngFor="let element of aList" [aList]="aList" class="card-columns">
+<div class="container card-deck mx-auto">
+<div *ngFor="let element of aList" [aList]="aList">
   <app-episode [episode]='element'></app-episode>
 </div>
 </div>

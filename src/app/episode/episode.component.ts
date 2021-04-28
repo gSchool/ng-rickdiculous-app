@@ -7,7 +7,7 @@ import { Episode } from '../episode';
   styleUrls: ['./episode.component.css']
 })
 export class EpisodeComponent implements OnInit {
-  @Input() episode: Episode;
+  @Input() episode: Episode = new Episode(0, 'name', 'date', '');
 
   constructor() { }
 

@@ -14,7 +14,7 @@ export class EpisodeListComponent implements OnInit {
   constructor(rmService: RickAndMortyService) {
     rmService.buildEpisodes();
     this.aList = rmService.episodes;
-    console.log(this.aList);
+    //console.log(this.aList[0]);
   }
 
   ngOnInit(): void {
