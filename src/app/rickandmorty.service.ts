@@ -12,37 +12,63 @@ export class RickAndMortyService {
   baseAPI = 'https://rickandmortyapi.com/api';
   results: [] = [];
   private _episodes: Episode[] = [];
+  private _lastEpisode: Episode;
 
   constructor(private http: HttpClient) {
+    //this.buildEpisodes();
     return;
   }
 
-  getAll(): Observable<any> {
+  getEpisodesObservable(): Observable<any> {
     return this.http.get(this.baseAPI + '/episode');
   }
 
-  getEpisode(episode: number): Observable<any> {
-    return this.http.get(this.baseAPI + `/episode/${episode}`).pipe(
-      tap(
-        data => console.log(data),
-        err => console.log(err)
-      ));
+  getEpisodePageObservable(nextPage: string): Observable<any> {
+    return this.http.get(nextPage);
   }
 
-  getAllEpisodes(): void {
-    this.getAll().subscribe(
+  // get(episode: number): Observable<any> {
+  //   return this.http.get(this.baseAPI + `/episode/${episode}`);
+  // }
+
+  buildEpisodes(): void {  
+    this._episodes = [];
+    this.getEpisodesObservable().subscribe(
       data => {
         data.results.forEach((item) => {
           this.episodes.push(new Episode(item.id, item.name, item.air_date, item.episode,
             item.characters, item.url));
         });
+        this.buildPage(data.info.next);
       },
       error => console.log(error)
     );
   }
 
+  private buildPage(page : string): void{
+    this.getEpisodePageObservable(page).subscribe(
+      data => {
+        data.results.forEach((item) => {
+          this.episodes.push(new Episode(item.id, item.name, item.air_date, item.episode,
+            item.characters, item.url));
+        });
+        if(data.info.next)
+          this.buildPage(data.info.next);
+      },
+      error => console.log(error)
+    );
+  }
+
+  getEpisode(episode: number): Episode {
+    return this._episodes.filter((element) => {element.id == episode})[0];
+  }
+
   get episodes(): Episode[]{
     return this._episodes;
+  }
+
+  set episodes(episodes : Episode[]){
+    this._episodes = episodes;
   }
 }
 

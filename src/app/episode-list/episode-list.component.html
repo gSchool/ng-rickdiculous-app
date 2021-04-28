@@ -1,4 +1,5 @@
 <p>episode-list works!</p>
 <div *ngFor="let element of aList" [aList]="aList">
   {{element.id}}
+  <app-episode [id]='element.id'></app-episode>
 </div>

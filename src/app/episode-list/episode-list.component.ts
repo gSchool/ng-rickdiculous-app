@@ -9,13 +9,16 @@ import {Episode} from '../episode';
 })
 export class EpisodeListComponent implements OnInit {
   @Input() public aList: Episode[];
+  @Input() public episode: Episode;
 
   constructor(rmService: RickAndMortyService) {
+    rmService.buildEpisodes();
     this.aList = rmService.episodes;
     console.log(this.aList);
   }
 
   ngOnInit(): void {
+
   }
 
 }

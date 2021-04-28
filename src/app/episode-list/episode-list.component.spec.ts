@@ -34,8 +34,8 @@ describe('EpisodeListComponent', () => {
   });
 
   it('should obtain a list of movies from the service', () => {
-    rmService.getAllEpisodes();
+    rmService.buildEpisodes();
     const epList: Episode[] = rmService.episodes;
-    expect(epList).toBeTruthy();
+    expect(epList.length).toBeGreaterThan(0);
   });
 });
