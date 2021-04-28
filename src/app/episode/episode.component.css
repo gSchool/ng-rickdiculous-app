@@ -2,11 +2,22 @@
     width: 20rem;
     /* height: 30rem; */
 }
-img {
+ img {
     width:auto;
     height:auto;
-}
+} 
 .img-thumbnail{
     border-color: grey;
-    background-color:lightslategray;
+    border-width: 3px;
+}
+.card:hover{
+    border-color: steelblue;
+    /* border-radius: 50%; */
+    background-color:black;
+    opacity: 0.85;
+    /* .img-thumbnail. */
+    
+}
+a:hover {
+    text-decoration: none;
 }

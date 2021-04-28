@@ -3,13 +3,13 @@
 <div class='card text-center text-white bg-dark  mb-3'>
     <img class="card-img-top m-sm-1" src="../assets/placeholder.jpg" alt="PICKLE RICK">
     <div class='cardbody'>
-        <h5 class="card-title">{{episode.name}}</h5>
+        <a routerLink="/details" class="stretched-link text-reset"><h5 class="card-title">{{episode.name}}</h5></a>
         <!-- <div class='row'> -->
         <h6 class="card-subtitle mb-2 text-muted">{{episode.episode}}</h6>
         <p class="card-text">{{episode.airDate}}</p>
         <!-- </div> -->
         <!-- TODO https://angular.io/guide/router-tutorial-toh#route-parameters -->
-        <a class="btn btn-primary" routerLink="/details">Details</a>
+        <!-- <a class="btn btn-primary stretched-link" routerLink="/details">Details</a> -->
         <br>
     </div>
 </div>

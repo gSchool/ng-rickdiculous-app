@@ -8,6 +8,7 @@ import { EpisodeComponent } from './episode.component';
 describe('EpisodeComponent', () => {
   let component: EpisodeComponent;
   let fixture: ComponentFixture<EpisodeComponent>;
+  let htmlElement: any;
 
   beforeEach(waitForAsync (() => {
     TestBed.configureTestingModule({
@@ -21,10 +22,18 @@ describe('EpisodeComponent', () => {
     fixture = TestBed.createComponent(EpisodeComponent);
     component = fixture.componentInstance;
     fixture.autoDetectChanges();
+    htmlElement = fixture.nativeElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the card elements', () => {
+    expect(htmlElement.querySelector('.card')).not.toBeNull();
+    expect(htmlElement.querySelector('.card-title')).not.toBeNull();
+    expect(htmlElement.querySelector('.card-subtitle')).not.toBeNull();
+    expect(htmlElement.querySelector('.card-text')).not.toBeNull();
   });
 
 });
