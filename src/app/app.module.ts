@@ -8,13 +8,15 @@ import { EpisodesListComponent } from './components/episodes-list/episodes-list.
 import { EpisodeDetailComponent } from './components/episode-detail/episode-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     SearchFormComponent,
     EpisodesListComponent,
-    EpisodeDetailComponent
+    EpisodeDetailComponent,
+    SideMenuComponent
   ],
   imports: [
     AppRoutingModule,
