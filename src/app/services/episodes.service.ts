@@ -3,17 +3,20 @@ import { Observable } from 'rxjs';
 import { Episode } from '../models/episode';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { environment as env } from '../../environments/environment';
 
 interface ApiRicksponse {
   info?: {};
   results: Episode[];
 }
 
+export const episodesUrl = env.apiUrl + 'episode/';
+
 @Injectable({
   providedIn: 'root'
 })
 export class EpisodesService {
-  private url = 'https://rickandmortyapi.com/api/episode/';
+  private url = episodesUrl;
   // tslint:disable-next-line:variable-name
   private _episodes: Episode[] = [];
   public info: {};
