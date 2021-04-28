@@ -22,6 +22,7 @@ describe('TestingService', () => {
     TestBed.configureTestingModule({imports: [HttpClientModule]});
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     service = new RickAndMortyService(httpClientSpy as any);
+    httpClientSpy.get.and.returnValue(of(expectedResponse));
   }));
 
   it('should be created', () => {
@@ -29,7 +30,6 @@ describe('TestingService', () => {
   });
 
   it('should return a list of Episode Objects', () => {
-    httpClientSpy.get.and.returnValue(of(expectedResponse));
     // service.getAllEpisodes();
     service.getEpisodesObservable().subscribe(
       data => {

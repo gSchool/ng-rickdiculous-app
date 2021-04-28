@@ -1,5 +1,5 @@
-<p>episode-list works!</p>
-<div *ngFor="let element of aList" [aList]="aList">
-  {{element.id}}
-  <app-episode [id]='element.id'></app-episode>
+<div class="container">
+<div *ngFor="let element of aList" [aList]="aList" class="card-columns">
+  <app-episode [episode]='element'></app-episode>
+</div>
 </div>

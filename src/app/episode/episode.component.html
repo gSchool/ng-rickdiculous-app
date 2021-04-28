@@ -1,2 +1,13 @@
-<p>{{id}}</p>
-
+<!-- <p>{{name}}{{season}}{{airdate}}</p> -->
+<!-- <div cla> -->
+<div class='card text-center'>
+    <img class="card-img-top img-thumbnail" src="../assets/placeholder.jpg" alt="">
+    <div class='cardbody'>
+        <h5 class="card-title">{{episode.name}}</h5>
+        <!-- <div class='row'> -->
+        <h6 class="card-subtitle mb-2 text-muted">{{episode.episode}}</h6>
+        <p class="card-text">{{episode.airDate}}</p>
+        <!-- </div> -->
+        <a class="btn btn-primary" ng-click="openDetails(episode.url)">Details</a>
+    </div>
+</div>
