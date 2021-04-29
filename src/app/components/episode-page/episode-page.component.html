@@ -1,0 +1,6 @@
+<div>
+  <h2 *ngIf="episode; else loading">{{ episode.name }}</h2>
+  <ng-template #loading>
+    <progress></progress>
+  </ng-template>
+</div>
