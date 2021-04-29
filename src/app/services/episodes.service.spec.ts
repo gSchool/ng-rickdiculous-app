@@ -1,9 +1,10 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
-import { EpisodesService } from './episodes.service';
+import {EpisodesService, episodesUrl} from './episodes.service';
 import { of } from 'rxjs';
 import { Episode } from '../models/episode';
 import episodesJson from '../data/ram_episodes.json';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
 
@@ -55,5 +56,28 @@ describe('EpisodesService', () => {
 
   xit('should return next page of search results', () => {
     // TODO: Caching old results may not be the most straight-forward implementation with page
+  });
+});
+
+
+describe('EpisodesService (alt)', () => {
+  let service: EpisodesService;
+  let httpTestController: HttpTestingController;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
+      providers: [ EpisodesService ]
+    });
+    httpTestController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(EpisodesService);
+  }));
+
+  it('all() should send one request to api', () => {
+    service.all().subscribe(); // start request
+
+    const request = httpTestController.expectOne(episodesUrl);
+    request.flush({info: {}, results: []}); // data to return for request
+    httpTestController.verify(); // assertion; expects one request to url above
   });
 });
