@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {filter, tap} from 'rxjs/operators';
 import {Episode} from './episode';
 
 @Injectable({
@@ -30,6 +30,11 @@ export class RickAndMortyService {
     return this.http.get(this.baseAPI + '/episode/' + id);
   }
 
+  getCharacterObservable(charArray: string[]): Observable<any> {
+    let urlEnd: string[] = charArray.map(string => string.slice(string.lastIndexOf('/') + 1));
+    let url: string = this.baseAPI + '/character/' + urlEnd.join(",");
+    return this.http.get(url);
+  }
   // get(episode: number): Observable<any> {
   //   return this.http.get(this.baseAPI + `/episode/${episode}`);
   // }
@@ -49,14 +54,13 @@ export class RickAndMortyService {
     );
   }
 
-  buildEpisode(id: string): void {
-    //this._lastEpisode = undefined;
-    this.getEpisodeObservable(id).subscribe(
-      data => {
-        this._lastEpisode = new Episode(data.id, data.name, data.air_date, data.episode, data.url, data.characters);
-      },
-      error => console.log(error));
-   }
+  // buildEpisode(id: string): void {
+  //   this.getEpisodeObservable(id).subscribe(
+  //     data => {
+  //       this._lastEpisode = new Episode(data.id, data.name, data.air_date, data.episode, data.url, data.characters);
+  //     },
+  //     error => console.log(error));
+  //  }
 
   private buildPage(page : string): void{
     this.getEpisodePageObservable(page).subscribe(

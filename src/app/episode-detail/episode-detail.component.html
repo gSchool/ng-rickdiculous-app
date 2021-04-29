@@ -2,7 +2,11 @@
     <h1 id='name'>{{episode.name}}</h1>
     <h1 id='episode'>{{episode.episode}}</h1>
     <h1 id='airdate'>{{episode.airDate}}</h1>
-    <h1 id='characters'></h1>
 </div>
 <ng-template #loading>
+
 </ng-template>
+
+<div *ngFor="let character of characterList">
+    <h1 id='characters'>{{character.name}}</h1>
+</div>

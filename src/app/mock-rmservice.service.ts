@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Episode } from './episode';
 
 @Injectable({
@@ -24,6 +25,10 @@ export class MockRMServiceService {
 
   getEpisode(){
     return this._episodes[0];
+  }
+
+  getEpisodeObservable(): Observable<any>{
+    return of(this._episodes[0]);
   }
 
   get episodes(){

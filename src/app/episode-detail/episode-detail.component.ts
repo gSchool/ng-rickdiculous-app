@@ -11,6 +11,7 @@ import { RickAndMortyService } from '../rickandmorty.service';
 export class EpisodeDetailComponent implements OnInit {
   public id: string;
   @Input() episode : Episode;
+  @Input() characterList : [{}];
 
   constructor(private rmService: RickAndMortyService,
               private route: ActivatedRoute) { }
@@ -21,10 +22,14 @@ export class EpisodeDetailComponent implements OnInit {
       this.rmService.getEpisodeObservable(this.id).subscribe(
         data => {
           this.episode = new Episode(data.id, data.name, data.air_date, data.episode, data.url, data.characters);
+          this.rmService.getCharacterObservable(this.episode.characters).subscribe(
+            data => {
+              this.characterList = data;
+            }
+          );
         },
         error => {console.log(error)}
       );
     });
-  }
-
+  }// end ngoninit
 }
