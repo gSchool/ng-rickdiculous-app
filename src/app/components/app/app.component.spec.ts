@@ -42,6 +42,6 @@ describe('AppComponent', () => {
     router.navigate(['']);
     tick();
     expect(location.path()).toBe('');
-    expect(htmlElement.querySelector('app-home')).not.toBeNull();
+    expect(htmlElement.querySelector('app-home')).toBeTruthy();
   }));
 });

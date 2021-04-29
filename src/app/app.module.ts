@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { EpisodeComponent } from './episode/episode.component';
+import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { EpisodeComponent } from './episode/episode.component';
     HomeComponent,
     EpisodeListComponent,
     EpisodeComponent,
+    EpisodeDetailComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule

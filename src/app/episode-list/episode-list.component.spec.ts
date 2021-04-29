@@ -42,9 +42,13 @@ describe('EpisodeListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render a collection of episode elements', () => {
-    fixture.detectChanges();
+  it('should contain a list of episode elements', () => {
     expect(component.aList.length).toEqual(1);
-    expect(htmlElement.querySelectorAll('app-episode').length).toBeGreaterThan(0);
+  });
+
+  it('should render a episode element for each episode in the list', () => {
+    //fixture.detectChanges();
+    const listLength: number = component.aList.length;
+    expect(htmlElement.querySelectorAll('app-episode').length).toEqual(listLength);
   });
 });

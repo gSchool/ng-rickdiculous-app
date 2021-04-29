@@ -15,7 +15,7 @@ export class RickAndMortyService {
   private _lastEpisode: Episode;
 
   constructor(private http: HttpClient) {
-    //this.buildEpisodes();
+    this.buildEpisodes();
     return;
   }
 
@@ -37,9 +37,10 @@ export class RickAndMortyService {
       data => {
         data.results.forEach((item) => {
           this.episodes.push(new Episode(item.id, item.name, item.air_date, item.episode,
-            item.characters, item.url));
+            item.url, item.characters));
         });
-        this.buildPage(data.info.next);
+        if(data.info.next)
+          this.buildPage(data.info.next);
       },
       error => console.log(error)
     );
@@ -50,7 +51,7 @@ export class RickAndMortyService {
       data => {
         data.results.forEach((item) => {
           this.episodes.push(new Episode(item.id, item.name, item.air_date, item.episode,
-            item.characters, item.url));
+            item.url, item.characters));
         });
         if(data.info.next)
           this.buildPage(data.info.next);
@@ -59,8 +60,8 @@ export class RickAndMortyService {
     );
   }
 
-  getEpisode(episode: number): Episode {
-    return this._episodes.filter((element) => {element.id == episode})[0];
+  getEpisode(id: number): Episode {
+    return this._episodes.filter((value) => value.id == id)[0];
   }
 
   get episodes(): Episode[]{

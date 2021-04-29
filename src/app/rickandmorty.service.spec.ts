@@ -12,17 +12,18 @@ describe('TestingService', () => {
   let httpClientSpy: {get: jasmine.Spy};
 
   const expectedResponse: {} = {
-    info: {},
+    info: {next : null},
     results: [
-      {id: 0, name: 'testEp', airDate: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
+      {id: 0, name: 'testEp', air_date: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
     ]
   };
+  const testEpisode: Episode = new Episode(0, 'testEp', 'whatever',  'S01E01',  'testurl', []);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({imports: [HttpClientModule]});
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new RickAndMortyService(httpClientSpy as any);
     httpClientSpy.get.and.returnValue(of(expectedResponse));
+    service = new RickAndMortyService(httpClientSpy as any);
   }));
 
   it('should be created', () => {
@@ -30,24 +31,16 @@ describe('TestingService', () => {
   });
 
   it('should return a list of Episode Objects', () => {
-    // service.getAllEpisodes();
     service.getEpisodesObservable().subscribe(
       data => {
-        // data.results.forEach((item) => {
-        //   service.episodes.push(new Episode(item.id, item.name, item.air_date, item.episode,
-        //     item.characters, item.url));
-        // });
-        // build
         expect(data).toEqual(expectedResponse);
-        // expect(service.episodes[0].id).toEqual(0);
       },
       error => console.log(error)
     );
   });
 
-  // it('should return a single specific Episode Object', () => {
-  //   service.episodes = expectedResponse['results'];
-  //   const testEp: Episode = service.getEpisode(0);
-  //   expect(testEp).toEqual(expectedResponse['results'][0]);
-  // });
+  it('should return a single specific Episode Object', () => {
+    let episodeResponse: Episode = service.getEpisode(0);
+    expect(episodeResponse).toEqual(testEpisode);
+  });
 });

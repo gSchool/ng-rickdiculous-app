@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from '../home/home.component';
+import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'home',
     redirectTo: '/',
+  },
+  {
+    path: 'episode/:id',
+    component: EpisodeDetailComponent,
   },
 ];
 
