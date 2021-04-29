@@ -41,13 +41,13 @@ describe('SideMenuComponent', () => {
   it('navigate to /home', fakeAsync(() => {
     router.navigate(['home']);
     tick();
-    expect(location.path()).toBe('/');
+    expect(location.path()).toBe('');
   }));
 
   it('navigate to /episode', fakeAsync(() => {
-    router.navigate(['episode']);
+    router.navigate(['episode', 1]);
     tick();
-    expect(location.path()).toBe('/episode');
+    expect(location.path()).toBe('/episode/1');
   }));
 
 });
