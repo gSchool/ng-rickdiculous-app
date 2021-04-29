@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EpisodesListComponent } from '../episodes-list/episodes-list.component';
 import { EpisodesService } from '../../services/episodes.service';
 import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import MockEpisodesService from '../../services/MockEpisodesService';
 
 
@@ -20,7 +21,8 @@ describe('LandingPage', () => {
         EpisodesListComponent, EpisodeDetailComponent
       ],
       imports: [ ReactiveFormsModule ],
-      providers: [ { provide: EpisodesService, useClass: MockEpisodesService }]
+      providers: [ { provide: EpisodesService, useClass: MockEpisodesService }],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
     fixture = TestBed.createComponent(LandingPageComponent);
     component = fixture.componentInstance;
@@ -34,16 +36,7 @@ describe('LandingPage', () => {
   });
 
   it('should render search form', () => {
-    // Remember: toBeTruthy() will fail for null values. toBeDefined() wont!
     expect(html.querySelector('app-search-form')).toBeTruthy();
-  });
-
-  it('should render navigation menu', () => {
-
-  });
-
-  it('should render episode list component', () => {
-    expect(html.querySelector('app-episodes-list')).toBeTruthy();
   });
 
   it('should handle search event', () => {

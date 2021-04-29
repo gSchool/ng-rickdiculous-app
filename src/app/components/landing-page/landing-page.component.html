@@ -2,5 +2,5 @@
   <h1>{{ title }}</h1>
 <!--  Output search query to event handler-->
   <app-search-form (searchEvent)="handleSearch($event)"></app-search-form>
-  <app-episodes-list></app-episodes-list>
+  <router-outlet></router-outlet>
 </div>
