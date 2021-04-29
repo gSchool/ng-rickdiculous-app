@@ -9,6 +9,7 @@ import { EpisodeDetailComponent } from './components/episode-detail/episode-deta
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { EpisodePageComponent } from './components/episode-page/episode-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     SearchFormComponent,
     EpisodesListComponent,
     EpisodeDetailComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    EpisodePageComponent
   ],
   imports: [
     AppRoutingModule,

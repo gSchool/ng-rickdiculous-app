@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { EpisodesListComponent } from '../app/components/episodes-list/episodes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EpisodesService } from '../app/services/episodes.service';
+import {EpisodeDetailComponent} from '../app/components/episode-detail/episode-detail.component';
 
 describe('Episodes Integration', () => {
   let fixture: ComponentFixture<EpisodesListComponent>;
@@ -11,7 +12,7 @@ describe('Episodes Integration', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
-      declarations: [ EpisodesListComponent ],
+      declarations: [ EpisodesListComponent, EpisodeDetailComponent ],
       providers: [ EpisodesService ]
     }).compileComponents();
   }));
