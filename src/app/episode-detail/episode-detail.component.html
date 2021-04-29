@@ -1,1 +1,8 @@
-<p>episode-detail works!</p>
+<div *ngIf="episode; else loading">
+    <h1 id='name'>{{episode.name}}</h1>
+    <h1 id='episode'>{{episode.episode}}</h1>
+    <h1 id='airdate'>{{episode.airDate}}</h1>
+    <h1 id='characters'></h1>
+</div>
+<ng-template #loading>
+</ng-template>

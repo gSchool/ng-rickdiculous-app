@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppRoutingModule} from '../../app-routing/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 let fixture: ComponentFixture<AppComponent>;
@@ -20,7 +21,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        BrowserModule, RouterTestingModule, AppRoutingModule
+        BrowserModule, RouterTestingModule, AppRoutingModule, HttpClientModule
       ],
     }).compileComponents();
   });
@@ -43,5 +44,11 @@ describe('AppComponent', () => {
     tick();
     expect(location.path()).toBe('');
     expect(htmlElement.querySelector('app-home')).toBeTruthy();
+  }));
+
+  it('should successfully route to the episode-details component', fakeAsync(() => {
+    router.navigate(['/episode/1']);
+    tick();
+    expect(location.path()).toBe('/episode/1');
   }));
 });

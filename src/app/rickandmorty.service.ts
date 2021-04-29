@@ -15,7 +15,6 @@ export class RickAndMortyService {
   private _lastEpisode: Episode;
 
   constructor(private http: HttpClient) {
-    this.buildEpisodes();
     return;
   }
 
@@ -25,6 +24,10 @@ export class RickAndMortyService {
 
   getEpisodePageObservable(nextPage: string): Observable<any> {
     return this.http.get(nextPage);
+  }
+
+  getEpisodeObservable(id: string): Observable<any> {
+    return this.http.get(this.baseAPI + '/episode/' + id);
   }
 
   // get(episode: number): Observable<any> {
@@ -45,6 +48,15 @@ export class RickAndMortyService {
       error => console.log(error)
     );
   }
+
+  buildEpisode(id: string): void {
+    //this._lastEpisode = undefined;
+    this.getEpisodeObservable(id).subscribe(
+      data => {
+        this._lastEpisode = new Episode(data.id, data.name, data.air_date, data.episode, data.url, data.characters);
+      },
+      error => console.log(error));
+   }
 
   private buildPage(page : string): void{
     this.getEpisodePageObservable(page).subscribe(
@@ -70,6 +82,10 @@ export class RickAndMortyService {
 
   set episodes(episodes : Episode[]){
     this._episodes = episodes;
+  }
+
+  get lastEpisode(): Episode{
+    return this._lastEpisode;
   }
 }
 

@@ -15,7 +15,7 @@ describe('EpisodeComponent', () => {
   let router: Router;
   let location: Location;
   let htmlElement: any;
-  const episodeProperties= ['.card', '.card-title', '.card-subtitle', '.card-text'];
+  const episodeProperties= ['#image', '#name', '#episode'];
 
   beforeEach(waitForAsync (() => {
     TestBed.configureTestingModule({
@@ -53,7 +53,7 @@ describe('EpisodeComponent', () => {
     detailsButton.click();
     tick();
     fixture.detectChanges();
-    expect(location.path()).toEqual('/episode/0');
+    expect(location.path()).toEqual('/episode/0'); //mock service has ep with id 0
   }))
 
 });

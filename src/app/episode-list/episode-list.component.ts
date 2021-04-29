@@ -11,11 +11,12 @@ export class EpisodeListComponent implements OnInit {
   @Input() public aList: Episode[];
 
   constructor(private rmService: RickAndMortyService) {
-    //rmService.buildEpisodes();
-    this.aList = rmService.episodes;
+
   }
 
   ngOnInit(): void {
+    this.rmService.buildEpisodes();
+    this.aList = this.rmService.episodes;
   }
 
 }

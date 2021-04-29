@@ -10,10 +10,16 @@ export class MockRMServiceService {
       {id: 0, name: "testEp", airDate: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
   ];
 
+  _lastEpisode: Episode = this._episodes[0];
+
   constructor() { }
 
   buildEpisodes(){
     // return of(expectedReponse);
+  }
+
+  buildEpisode(){
+    // normally would define _lastepisode
   }
 
   getEpisode(){
@@ -22,5 +28,9 @@ export class MockRMServiceService {
 
   get episodes(){
     return this._episodes;
+  }
+
+  get lastEpisode(){
+    return this._lastEpisode;
   }
 }

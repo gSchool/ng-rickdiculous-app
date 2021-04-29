@@ -7,7 +7,7 @@ import {of} from 'rxjs';
 
 
 
-describe('TestingService', () => {
+describe('RickAndMortyService', () => {
   let service: RickAndMortyService;
   let httpClientSpy: {get: jasmine.Spy};
 
@@ -22,8 +22,9 @@ describe('TestingService', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({imports: [HttpClientModule]});
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    httpClientSpy.get.and.returnValue(of(expectedResponse));
     service = new RickAndMortyService(httpClientSpy as any);
+    httpClientSpy.get.and.returnValue(of(expectedResponse));
+    service.buildEpisodes();
   }));
 
   it('should be created', () => {
@@ -39,8 +40,17 @@ describe('TestingService', () => {
     );
   });
 
-  it('should return a single specific Episode Object', () => {
+  it('should get a single specific Episode Object from the episode list', () => {
     let episodeResponse: Episode = service.getEpisode(0);
     expect(episodeResponse).toEqual(testEpisode);
+  });
+
+  it('should query for a specific Episode from the API', () => {
+    httpClientSpy.get.and.returnValue(of(expectedResponse['results'][0]));
+    service.getEpisodeObservable('0').subscribe(
+      data => {
+        expect(data).toEqual(expectedResponse['results'][0]);
+      }
+    )
   });
 });
