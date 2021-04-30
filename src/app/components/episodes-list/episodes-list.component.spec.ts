@@ -40,4 +40,8 @@ describe('EpisodesListComponent', () => {
   it('should fetch episodes from service', () => {
     expect(component.episodes.length).toEqual(1);
   });
+
+  it('should render episodes in a flexible row', () => {
+    expect(html.querySelector('.row')).toBeTruthy();
+  });
 });

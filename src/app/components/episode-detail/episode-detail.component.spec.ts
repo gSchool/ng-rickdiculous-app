@@ -31,7 +31,11 @@ describe('EpisodeDetailComponent', () => {
 
   it('should render an episode', () => {
     expect(component.episode).toBeTruthy();
-    expect(html.querySelector('h3').textContent).toEqual(episode.name);
+    expect(html.querySelector('h5.card-title').textContent).toEqual(episode.name);
+  });
+
+  it('should render episode in a flex column', () => {
+    expect(html.querySelectorAll('.col').length).toBeGreaterThan(0);
   });
 
   // Test utils ------------------------
@@ -40,7 +44,7 @@ describe('EpisodeDetailComponent', () => {
     episode = new Episode();
     episode.name = 'Test and Rorty';
     episode.episode = 'TEST01';
-    episode.airDate = 'December 2, 2013';
+    episode.air_date = 'December 2, 2013';
     return episode;
   }
 });

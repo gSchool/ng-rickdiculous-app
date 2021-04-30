@@ -1,5 +1,15 @@
-<div>
-  <h3><a [routerLink]="['/episode', episode.id]">{{ episode.name }}</a></h3>
-  <img src="https://via.placeholder.com/200" alt="episode thumbnail">
-  <p>{{ episode.episode}} | {{ episode.airDate }}</p>
+<div class="col s4 13">
+  <div class="card medium">
+
+    <img class="activator responsive-img" src="https://via.placeholder.com/200" alt="episode thumbnail">
+    <div class="card-content">
+      <h5 class="card-title">
+        <a [routerLink]="['/episode', episode.id]">{{ episode.name }}</a>
+      </h5>
+      <div class="card-text">
+        <p>{{ episode.episode }} | {{ episode.air_date | date }}</p>
+      </div>
+
+    </div>
+  </div>
 </div>
