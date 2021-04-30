@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
-  title = 'Rickfans of Mortydom';
+  title = 'Rickdiculous Mortydom';
 
   handleSearch(event: string): void {
     console.log('Search event', event);
