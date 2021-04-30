@@ -2,6 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFormComponent } from './search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchService } from '../../services/search.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+class MockSearchService {}
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
@@ -11,7 +15,8 @@ describe('SearchFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SearchFormComponent ],
-      imports: [ ReactiveFormsModule ]
+      imports: [ ReactiveFormsModule, HttpClientTestingModule ],
+      providers: [ { provider: SearchService, useClass: MockSearchService }]
     })
     .compileComponents();
   });
@@ -33,7 +38,18 @@ describe('SearchFormComponent', () => {
 
   it('should render search query text field', () => {
     expect(html.querySelector('#searchField').value).toBeDefined();
-    expect(component.searchForm.controls.query.value).toBeDefined();
+    expect(component.searchForm.controls.query).toBeDefined();
+  });
+
+  it('should render search options', () => {
+    const apiEndpoints = ['episode', 'character', 'location'];
+    const searchOptions = html.querySelectorAll('.searchOptions');
+    expect(html.querySelector('#searchOptions')).toBeTruthy();
+    expect(component.searchForm.controls.searchOption).toBeDefined();
+    expect(searchOptions.length).toEqual(3);
+    for (const option of searchOptions) {
+      expect(apiEndpoints).toContain(option.value);
+    }
   });
 
   it('should render `Search` on submit button', () => {

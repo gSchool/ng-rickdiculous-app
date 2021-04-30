@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiRicksponse } from '../../services/episodes.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class LandingPageComponent {
   title = 'Rickdiculous Mortydom';
+  results: ApiRicksponse;
 
-  handleSearch(event: string): void {
+  handleSearch(event: ApiRicksponse): void {
+    this.results = event;
     console.log('Search event', event);
   }
 }

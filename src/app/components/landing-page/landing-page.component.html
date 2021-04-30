@@ -6,8 +6,15 @@
     </div>
     <div class="col-10">
     <!--  Output search query to event handler-->
-<!--      <app-search-form (searchEvent)="handleSearch($event)"></app-search-form>-->
-      <router-outlet></router-outlet>
+      <app-search-form (searchEvent)="handleSearch($event)"></app-search-form>
+      <div *ngIf="results; else routelet" id="searchResults">
+        <div *ngFor="let result of results.results">
+          {{ result.name }}
+        </div>
+      </div>
+      <ng-template #routelet>
+        <router-outlet></router-outlet>
+      </ng-template>
     </div>
   </div>
 </div>

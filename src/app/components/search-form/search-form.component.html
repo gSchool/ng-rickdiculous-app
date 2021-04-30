@@ -2,6 +2,22 @@
   <label for="searchField">
     <input type="text" name="query" id="searchField" formControlName="query">
   </label>
+  <div class="form-group" id="searchOptions">
+    <fieldset class="form-group">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input searchOptions" name="searchOption" value="episode" formControlName="searchOption" checked="checked">
+        Episode
+      </label>
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input searchOptions" name="searchOption" value="character" formControlName="searchOption" disabled>
+        Character
+      </label>
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input searchOptions" name="searchOption" value="location" formControlName="searchOption" disabled>
+        Location
+      </label>
+    </fieldset>
+  </div>
   <label for="submitSearch">
     <input type="submit" id="submitSearch" value="Search">
   </label>
