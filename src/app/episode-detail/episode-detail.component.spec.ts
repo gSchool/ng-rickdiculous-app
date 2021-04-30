@@ -20,7 +20,7 @@ describe('EpisodeDetailComponent', () => {
     ]
   };
 
-  const detailsProperties= ['#name', '#airdate', '#episode'];
+  const detailsProperties= ['#image','#airdate', '#episode'];
   const characterProperties = ['#char-name', '#char-image'];
 
   beforeEach(async () => {

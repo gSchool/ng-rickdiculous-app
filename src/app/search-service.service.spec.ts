@@ -13,4 +13,13 @@ describe('SearchServiceService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should be able to update the services\'s data', () => {
+    service.sendSearch('testData');
+    service.searchSend$.subscribe(
+      data => {
+        expect(data).toEqual('testData');
+      }
+    )
+  })
 });

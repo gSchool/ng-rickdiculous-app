@@ -55,8 +55,9 @@ describe('AppComponent', () => {
   }));
 
   it('should render nav bar elements', () => {
-    for(let property of navbarProperties)
+    for(let property of navbarProperties){
       expect(htmlElement.querySelector(property)).toBeTruthy();
+    }
   });
 
 });
