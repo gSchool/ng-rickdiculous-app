@@ -14,6 +14,8 @@ let router: Router;
 let location: Location;
 let htmlElement: any;
 
+const navbarProperties = ['#searchbox', '#homebutton'];
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -51,4 +53,10 @@ describe('AppComponent', () => {
     tick();
     expect(location.path()).toBe('/episode/1');
   }));
+
+  it('should render nav bar elements', () => {
+    for(let property of navbarProperties)
+      expect(htmlElement.querySelector(property)).toBeTruthy();
+  });
+
 });

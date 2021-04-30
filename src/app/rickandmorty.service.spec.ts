@@ -11,7 +11,7 @@ describe('RickAndMortyService', () => {
   let service: RickAndMortyService;
   let httpClientSpy: {get: jasmine.Spy};
 
-  const expectedResponse: {} = {
+  const expectedResponse: {info: {}, results: [{}]} = {
     info: {next : null},
     results: [
       {id: 0, name: 'testEp', air_date: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
@@ -46,10 +46,10 @@ describe('RickAndMortyService', () => {
   });
 
   it('should query for a specific Episode from the API', () => {
-    httpClientSpy.get.and.returnValue(of(expectedResponse['results'][0]));
+    httpClientSpy.get.and.returnValue(of(expectedResponse.results[0]));
     service.getEpisodeObservable('0').subscribe(
       data => {
-        expect(data).toEqual(expectedResponse['results'][0]);
+        expect(data).toEqual(expectedResponse.results[0]);
       }
     )
   });

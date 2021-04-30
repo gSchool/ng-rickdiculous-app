@@ -11,6 +11,8 @@ export class MockRMServiceService {
       {id: 0, name: "testEp", airDate: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
   ];
 
+  character = [{name : 'Rick', image:'../assets/placeholder.jpg'}]
+
   _lastEpisode: Episode = this._episodes[0];
 
   constructor() { }
@@ -29,6 +31,10 @@ export class MockRMServiceService {
 
   getEpisodeObservable(): Observable<any>{
     return of(this._episodes[0]);
+  }
+
+  getCharacterObservable(): Observable<any>{
+    return of(this.character);
   }
 
   get episodes(){

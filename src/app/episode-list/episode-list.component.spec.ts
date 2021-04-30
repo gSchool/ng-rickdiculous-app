@@ -23,7 +23,7 @@ describe('EpisodeListComponent', () => {
 
   beforeEach(async () => {
     //const fakeRickMortyService = jasmine.createSpyObj('RickAndMortyService', [''])
-    await TestBed.configureTestingModule({
+      await TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
       declarations: [ EpisodeListComponent ],
       providers: [{provide: RickAndMortyService, useClass: MockRMServiceService}]
@@ -47,7 +47,6 @@ describe('EpisodeListComponent', () => {
   });
 
   it('should render a episode element for each episode in the list', () => {
-    //fixture.detectChanges();
     const listLength: number = component.aList.length;
     expect(htmlElement.querySelectorAll('app-episode').length).toEqual(listLength);
   });

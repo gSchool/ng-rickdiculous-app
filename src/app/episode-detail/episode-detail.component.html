@@ -1,12 +1,35 @@
-<div *ngIf="episode; else loading">
-    <h1 id='name'>{{episode.name}}</h1>
-    <h1 id='episode'>{{episode.episode}}</h1>
-    <h1 id='airdate'>{{episode.airDate}}</h1>
+<div class="container text-white" *ngIf="episode; else loading">
+    <div class="row">
+        <div id='#episode-info' class="col container">
+            <div class="row">
+                <div class="col-sm-auto">
+                    <img id='image' class="" src="../assets/placeholder.jpg" alt="PICKLE RICK">
+                </div>
+                <div id="detail-text" class="col-sm-5">
+                    <div class="row">
+                    <h1 id='episode'>{{episode.episode}} - {{episode.name}}</h1>
+                    <h3 id='airdate'>Released: {{episode.airDate}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+    </div>
 </div>
 <ng-template #loading>
-
 </ng-template>
-
-<div *ngFor="let character of characterList">
-    <h1 id='characters'>{{character.name}}</h1>
+<div class="container text-center text-white">
+    <h1>Characters</h1>
 </div>
+<div class="container card-deck mx-auto mt-2" *ngIf="characterList; else charloading">
+    <div class = 'card text-center mb-3' *ngFor="let character of characterList">
+        <img class='card-img-top m-sm-1' id='char-image' src={{character.image}}>
+        <div class='card-body'>
+            <h3 class='card-title' id='char-name'>{{character.name}}</h3>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">}</h6> -->
+        </div>
+    </div>    
+</div>
+<ng-template #charloading>
+</ng-template>

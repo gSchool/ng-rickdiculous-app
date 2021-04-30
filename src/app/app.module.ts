@@ -8,6 +8,7 @@ import { EpisodeListComponent } from './episode-list/episode-list.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { EpisodeComponent } from './episode/episode.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
+import { SearchServiceService } from './search-service.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule
   ],
-  providers: [],
+  providers: [SearchServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

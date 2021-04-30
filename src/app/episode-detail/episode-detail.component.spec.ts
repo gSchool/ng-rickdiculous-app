@@ -20,13 +20,14 @@ describe('EpisodeDetailComponent', () => {
     ]
   };
 
-  const detailsProperties= ['#name', '#airdate', '#episode', '#characters'];
+  const detailsProperties= ['#name', '#airdate', '#episode'];
+  const characterProperties = ['#char-name', '#char-image'];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EpisodeDetailComponent ],
       providers: [{provide: RickAndMortyService, useClass: MockRMServiceService}],
-            imports: [AppRoutingModule, RouterTestingModule, HttpClientModule],
+      imports: [AppRoutingModule, RouterTestingModule, HttpClientModule],
     })
     .compileComponents();
   });
@@ -46,8 +47,17 @@ describe('EpisodeDetailComponent', () => {
     expect(component.episode).toBeTruthy();
   })
 
+  it('should contain a defined character list', () => {
+    expect(component.characterList).toBeTruthy();
+  })
+
   it('should render episode details', () => {
-  for(let property of detailsProperties)
-    expect(htmlElement.querySelector(property)).toBeTruthy();
-  });
+    for(let property of detailsProperties)
+      expect(htmlElement.querySelector(property)).toBeTruthy();
+    });
+
+  it('should render at least 1 character', () => {
+    for(let property of characterProperties)
+      expect(htmlElement.querySelector(property)).toBeTruthy();
+    });
 });

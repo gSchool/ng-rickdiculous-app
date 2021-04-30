@@ -1,0 +1,22 @@
+/* .card-img{
+    width:200px;
+    height:200px;
+} */
+.card {
+    width: 15rem;
+    min-width: 15rem;
+    max-width: 15rem;
+    /* height: 30rem; */
+}
+img {
+    width:auto;
+    height:auto;
+} 
+.card-deck {
+    flex-wrap: wrap;
+    /* margin-left: 10%; */
+}
+#detail-text {
+    margin-left: 5px;
+    background-color:rgba(57, 55, 151, 0.1);
+}
