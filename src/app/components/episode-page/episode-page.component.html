@@ -1,6 +1,6 @@
 <div>
   <h2 *ngIf="episode; else loading">{{ episode.name }}</h2>
   <ng-template #loading>
-    <progress></progress>
+    <progress class="progress-bar progress-bar-striped progress-bar-animated bg-warning"></progress>
   </ng-template>
 </div>
