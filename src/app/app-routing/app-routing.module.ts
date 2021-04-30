@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from '../home/home.component';
 import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
+import { AppComponent } from '../components/app/app.component';
+import { EpisodeListComponent } from '../episode-list/episode-list.component';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: EpisodeListComponent,
   },
   {
     path: 'home',
@@ -16,6 +18,10 @@ const routes: Routes = [
   {
     path: 'episode/:id',
     component: EpisodeDetailComponent,
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent,
   },
 ];
 

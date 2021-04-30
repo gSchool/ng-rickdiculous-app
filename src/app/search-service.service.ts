@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class SearchServiceService {
   private searchSendData: Subject<string> = new Subject<string>();
 
-  searchSend$ = this.searchSendData.asObservable();
+  searchSend$: Observable<string> = this.searchSendData.asObservable();
 
   constructor() {
   }

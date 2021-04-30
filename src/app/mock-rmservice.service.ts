@@ -8,7 +8,8 @@ import { Episode } from './episode';
 export class MockRMServiceService {
 
   _episodes: Episode[] = [
-      {id: 0, name: "testEp", airDate: 'whatever', episode: 'S01E01', url: 'testurl', characters: []}
+      {id: 0, name: "testEp", airDate: 'whatever', episode: 'S01E01', url: 'testurl', characters: []},
+      {id: 1, name: 'zEp', airDate: 'whatever2', episode: 's01E02', url: 'invalidurl', characters: []}
   ];
 
   character = [{name : 'Rick', image:'../assets/placeholder.jpg'}]

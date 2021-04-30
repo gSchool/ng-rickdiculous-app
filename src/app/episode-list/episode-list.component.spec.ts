@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {Episode} from '../episode';
 import {of} from 'rxjs';
 import { MockRMServiceService } from '../mock-rmservice.service';
+import { SearchServiceService } from '../search-service.service';
+import { MockSearchService } from '../mock-search.service';
 
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
@@ -26,7 +28,8 @@ describe('EpisodeListComponent', () => {
       await TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
       declarations: [ EpisodeListComponent ],
-      providers: [{provide: RickAndMortyService, useClass: MockRMServiceService}]
+      providers: [{provide: RickAndMortyService, useClass: MockRMServiceService},
+                  {provide: SearchServiceService, useClass: MockSearchService}]
     })
     .compileComponents();
   });
@@ -50,4 +53,9 @@ describe('EpisodeListComponent', () => {
     const listLength: number = component.aList.length;
     expect(htmlElement.querySelectorAll('app-episode').length).toEqual(listLength);
   });
+
+  it('should filter episodes using data from search service', () => {
+
+    expect(component.aList.length).toEqual(1);
+  })
 });

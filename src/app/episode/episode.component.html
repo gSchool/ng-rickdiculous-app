@@ -3,6 +3,7 @@
 <div class='card text-center text-white bg-dark  mb-3'>
     <img id='image' class="card-img-top m-sm-1" src="../assets/placeholder.jpg" alt="PICKLE RICK">
     <div class='cardbody'>
+        <input type='checkbox' (click)="toggleFavorite()" [checked]='favoriteToggle'>Favorite
         <a [routerLink]="['/episode', episode.id]" class="stretched-link text-reset">
             <h5 id='name' class="card-title">{{episode.name}}</h5>
         </a>

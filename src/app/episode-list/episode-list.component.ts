@@ -10,21 +10,32 @@ import { SearchServiceService } from '../search-service.service';
 })
 export class EpisodeListComponent implements OnInit {
   @Input() public aList: Episode[];
+  @Input() public favList: Episode[];
   @Input() public ourSearch: string;
+  @Input() public favoritesToggled: boolean = false;
 
   constructor(private rmService: RickAndMortyService,
               private searchSerivce: SearchServiceService) {
-
   }
 
   ngOnInit(): void {
     this.rmService.buildEpisodes();
     this.aList = this.rmService.episodes; //reference
-    //this.bList = JSON.parse(JSON.stringify(this.aList)); //copy
-    this.searchSerivce.searchSend$.subscribe(search => {
-      this.aList = this.rmService.episodes.filter((value) => value.name.toLowerCase().includes(search.toLowerCase()));
-      console.log('this got called');
-    });
+    if(this.favoritesToggled)
+    {
+      // console.log(this.rmService.episodes); 
+      // this.rmService.episodes.forEach((episode) => {
+      //   console.log(episode.id);
+      // });
+      this.aList = this.rmService.episodes.filter((value) => localStorage.getItem('' + value.id) === 'true');
+    }
+      
+    else{
+      
+      this.searchSerivce.searchSend$.subscribe(search => {
+        this.aList = this.rmService.episodes.filter((value) => value.name.toLowerCase().includes(search.toLowerCase()));
+        console.log('this got called');
+      });
+    }   
   }
-
 }

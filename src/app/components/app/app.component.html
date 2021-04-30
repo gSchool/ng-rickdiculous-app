@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-sm-2">
     <a id='homebutton' class="navbar-brand" [routerLink]="['/home']">Pickle Rick</a>
     <span style="padding-left:5em"></span>
-    <a id='favorites'>FAVORITES</a>
+    <a id='favorites' [routerLink]="['/favorites']">Favorites</a>
     <input #search id='searchbox' type="text" (input)="sendData(search.value)" placeholder='Search'>
 </nav>
 <router-outlet></router-outlet>

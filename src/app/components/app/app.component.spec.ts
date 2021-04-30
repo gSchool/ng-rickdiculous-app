@@ -45,7 +45,7 @@ describe('AppComponent', () => {
     router.navigate(['']);
     tick();
     expect(location.path()).toBe('');
-    expect(htmlElement.querySelector('app-home')).toBeTruthy();
+    expect(htmlElement.querySelector('app-episode-list')).toBeTruthy();
   }));
 
   it('should successfully route to the episode-details component', fakeAsync(() => {
