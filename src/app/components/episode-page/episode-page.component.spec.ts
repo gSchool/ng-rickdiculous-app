@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EpisodePageComponent } from './episode-page.component';
 import { Episode } from '../../models/episode';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { EpisodesService } from '../../services/episodes.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -18,7 +18,7 @@ describe('EpisodePageComponent', () => {
   beforeEach(waitForAsync(() => {
     episode = createEpisode();
     mockService = jasmine.createSpyObj(['getById']);
-    mockActivatedroute = { snapshot: { paramMap: { get: () => 1 }}};
+    mockActivatedroute = { snapshot: { paramMap: { get: () => '1' }}};
 
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule, HttpClientTestingModule ],
@@ -43,15 +43,6 @@ describe('EpisodePageComponent', () => {
 
   it('should render loading bar if no episode', () => {
     expect(html.querySelector('progress')).toBeTruthy();
-  });
-
-  xit('should get episode by id', () => {
-    // FIXME: a problem with activated route not being captured on init? episode never there.
-    fixture = TestBed.createComponent(EpisodePageComponent);
-    component = fixture.componentInstance;
-    component.getEpisode();
-    fixture.detectChanges();
-    expect(component.episode).toEqual(episode);
   });
 
   // Test utils ------------

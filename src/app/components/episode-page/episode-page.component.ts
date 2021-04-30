@@ -18,11 +18,6 @@ export class EpisodePageComponent implements OnInit {
   ngOnInit(): void {
     // tslint:disable-next-line:radix
     this.episodeId = +this.route.snapshot.paramMap.get('id');
-    this.getEpisode();
-  }
-
-  getEpisode(): void {
     this.service.getById(this.episodeId).subscribe(episode => this.episode = episode );
   }
-
 }

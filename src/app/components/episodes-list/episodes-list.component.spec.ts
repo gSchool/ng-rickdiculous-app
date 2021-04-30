@@ -33,7 +33,7 @@ describe('EpisodesListComponent', () => {
     expect(component.episodes).toBeDefined();
   });
 
-  it('should render each episode', () => {
+  it('should render episode template', () => {
     expect(html.querySelector('app-episode-detail')).toBeDefined();
   });
 

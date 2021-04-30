@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 
-interface ApiRicksponse {
+export interface ApiRicksponse {
   info?: {};
   results: Episode[];
 }
