@@ -23,6 +23,7 @@ describe('EpisodeListComponent', () => {
     ]
   };
 
+  // use waitForAsync instead of async/await
   beforeEach(async () => {
     //const fakeRickMortyService = jasmine.createSpyObj('RickAndMortyService', [''])
       await TestBed.configureTestingModule({

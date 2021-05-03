@@ -16,6 +16,7 @@ export class EpisodeDetailComponent implements OnInit {
   constructor(private rmService: RickAndMortyService,
               private route: ActivatedRoute) { }
 
+  // some of this should be handled by a service, especially the creation of a new Episode.
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id')

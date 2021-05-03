@@ -31,6 +31,7 @@ export class RickAndMortyService {
   }
 
   getCharacterObservable(charArray: string[]): Observable<any> {
+    // this is hard to understand what youre doing or why. This doesnt feel test driven.
     let urlEnd: string[] = charArray.map(string => string.slice(string.lastIndexOf('/') + 1));
     let url: string = this.baseAPI + '/character/' + urlEnd.join(",");
     return this.http.get(url);
@@ -39,7 +40,7 @@ export class RickAndMortyService {
   //   return this.http.get(this.baseAPI + `/episode/${episode}`);
   // }
 
-  buildEpisodes(): void {  
+  buildEpisodes(): void {
     this._episodes = [];
     this.getEpisodesObservable().subscribe(
       data => {
