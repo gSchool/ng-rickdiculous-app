@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SideMenuComponent } from './side-menu.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -37,10 +37,4 @@ describe('SideMenuComponent', () => {
   it('should render navbar', () => {
     expect(html.querySelector('nav')).toBeTruthy();
   });
-
-  it('navigate to /home', fakeAsync(() => {
-    router.navigate(['home']);
-    tick();
-    expect(location.path()).toBe('');
-  }));
 });
