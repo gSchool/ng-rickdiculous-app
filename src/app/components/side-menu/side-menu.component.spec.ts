@@ -43,11 +43,4 @@ describe('SideMenuComponent', () => {
     tick();
     expect(location.path()).toBe('');
   }));
-
-  it('navigate to /episode', fakeAsync(() => {
-    router.navigate(['episode', 1]);
-    tick();
-    expect(location.path()).toBe('/episode/1');
-  }));
-
 });

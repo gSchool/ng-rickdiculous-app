@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { EpisodePageComponent } from './components/episode-page/episode-page.component';
-import { EpisodesListComponent } from './components/episodes-list/episodes-list.component';
+import { EpisodePageComponent } from './episodes/episode-page/episode-page.component';
+import { EpisodesListComponent } from './episodes/episodes-list/episodes-list.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,8 @@ const routes: Routes = [
     redirectTo: '/'
   },
   {
-    path: 'episode/:id',
+    path: 'episodes/:id',
+    loadChildren: () => import('./episodes/episodes.module').then(m => m.EpisodesModule),
     component: EpisodePageComponent
   }
 ];

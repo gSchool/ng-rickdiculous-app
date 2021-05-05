@@ -2,9 +2,9 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular
 import { LandingPageComponent } from './landing-page.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EpisodesListComponent } from '../episodes-list/episodes-list.component';
+import { EpisodesListComponent } from '../../episodes/episodes-list/episodes-list.component';
 import {ApiRicksponse, EpisodesService} from '../../services/episodes.service';
-import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
+import { EpisodeDetailComponent } from '../../episodes/episode-detail/episode-detail.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import MockEpisodesService from '../../services/MockEpisodesService';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
