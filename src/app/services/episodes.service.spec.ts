@@ -1,11 +1,10 @@
-import {fakeAsync, TestBed, waitForAsync} from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
-import {EpisodesService, episodesUrl} from './episodes.service';
-import {of, throwError} from 'rxjs';
+import { EpisodesService, episodesUrl } from './episodes.service';
+import { of, throwError } from 'rxjs';
 import { Episode } from '../models/episode';
 import episodesJson from '../data/ram_episodes.json';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {HttpErrorResponse} from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import EpicFailError from '../shared/epic-fail.error';
 
 const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
@@ -85,20 +84,22 @@ describe('EpisodesService (alt)', () => {
   it('all() should send one request to api', () => {
     service.all().subscribe(); // start request
 
-    const request = httpTestController.expectOne(episodesUrl);
-    request.flush({info: {}, results: []}); // data to return for request
+    httpTestController.expectOne(episodesUrl);
     httpTestController.verify(); // assertion; expects one request to url above
   });
 
-  it('getById() should throw error on unsuccessful request', () => {
-    let res: EpicFailError = null;
+  it('getById() should epic-ly fail on unsuccessful request', () => {
+    let epicFail: EpicFailError = null;
+    let success: any = null;
     service.getById(10000).subscribe({
-      error: err => res = err  // set value to assert expectations later
+      next: res => success = res,
+      error: err => epicFail = err  // set value to assert expectations later
     });
 
     const request = httpTestController.expectOne(`${episodesUrl}10000`);
     request.error(new ErrorEvent('EpicFailError'), { status: 500, statusText: 'Not found.' });
     httpTestController.verify();
-    expect(res.status).toEqual(500);
+    expect(epicFail.status).toEqual(500);
+    expect(success).toBeNull();
   });
 });
