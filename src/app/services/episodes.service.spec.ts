@@ -1,10 +1,12 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import {fakeAsync, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {EpisodesService, episodesUrl} from './episodes.service';
-import { of } from 'rxjs';
+import {of, throwError} from 'rxjs';
 import { Episode } from '../models/episode';
 import episodesJson from '../data/ram_episodes.json';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpErrorResponse} from '@angular/common/http';
+import EpicFailError from '../shared/epic-fail.error';
 
 const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
 
@@ -39,6 +41,17 @@ describe('EpisodesService', () => {
     });
   });
 
+  it('getById() should throw error on unsuccessful request (HTTP)', () => {
+    const episode: Episode = episodesJson.results[0];
+    httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
+
+    service.getById(episode.id).subscribe({
+      error: err => {
+        expect(err.status).toEqual(500);
+      }
+    });
+  });
+
   it('should search for episodes by name', () => {
     const episode: Episode = episodesJson.results[1];
     service.episodes = episodesJson.results;
@@ -52,10 +65,6 @@ describe('EpisodesService', () => {
     service.getByName(episode.name).subscribe(data => {
       expect(data).toEqual(episode);
     });
-  });
-
-  xit('should return next page of search results', () => {
-    // TODO: Caching old results may not be the most straight-forward implementation with page
   });
 });
 
@@ -79,5 +88,17 @@ describe('EpisodesService (alt)', () => {
     const request = httpTestController.expectOne(episodesUrl);
     request.flush({info: {}, results: []}); // data to return for request
     httpTestController.verify(); // assertion; expects one request to url above
+  });
+
+  it('getById() should throw error on unsuccessful request', () => {
+    let res: EpicFailError = null;
+    service.getById(10000).subscribe({
+      error: err => res = err  // set value to assert expectations later
+    });
+
+    const request = httpTestController.expectOne(`${episodesUrl}10000`);
+    request.error(new ErrorEvent('EpicFailError'), { status: 500, statusText: 'Not found.' });
+    httpTestController.verify();
+    expect(res.status).toEqual(500);
   });
 });

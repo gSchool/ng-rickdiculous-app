@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Episode } from '../models/episode';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
+import EpicFailError from '../shared/epic-fail.error';
 
 export interface ApiRicksponse {
   info?: {};
@@ -24,20 +25,24 @@ export class EpisodesService {
   constructor(private http: HttpClient) { }
 
   all(): Observable<ApiRicksponse>{
-    return this.http.get<ApiRicksponse>(this.url)
+    return this.http.get<any>(this.url)
       .pipe(
         tap(
           data => {
             this.episodes = data.results;
             this.info = data.info;
-          },
-          err => console.error('Episode.all()', err)
+          }
         )
       );
   }
 
   getById(episodeId: number): Observable<any> {
-    return this.http.get<ApiRicksponse>(this.url + episodeId);
+    return this.http.get<ApiRicksponse>(this.url + episodeId)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw new EpicFailError(err);
+        })
+      );
   }
 
   findByName(episodeName: string): Episode {
