@@ -18,8 +18,7 @@ export const episodesUrl = env.apiUrl + 'episode/';
 })
 export class EpisodesService {
   private url = episodesUrl;
-  // tslint:disable-next-line:variable-name
-  private _episodes: Episode[] = [];
+  public episodes: Episode[] = [];
   public info: {};
 
   constructor(private http: HttpClient) { }
@@ -46,18 +45,10 @@ export class EpisodesService {
   }
 
   findByName(episodeName: string): Episode {
-    return this._episodes.filter(episode => episode.name === episodeName)[0];
+    return this.episodes.filter(episode => episode.name === episodeName)[0];
   }
 
   getByName(episodeName: string): Observable<any> {
     return this.http.get<ApiRicksponse>(`${this.url}/?=${episodeName}`);
-  }
-
-  get episodes(): Episode[] {
-    return this._episodes;
-  }
-
-  set episodes(episodes: Episode[]) {
-    this._episodes = episodes;
   }
 }

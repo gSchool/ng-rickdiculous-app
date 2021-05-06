@@ -23,31 +23,46 @@ describe('EpisodesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get list of all episodes (HTTP)', () => {
-    httpClientSpy.get.and.returnValue(of(apiResponse));
+  describe('getAll()', () => {
+    it('should get list of all episodes (HTTP)', () => {
+      httpClientSpy.get.and.returnValue(of(apiResponse));
 
-    service.all().subscribe(data => {
-      expect(data.results).toEqual(service.episodes);
+      service.all().subscribe(data => {
+        expect(data.results).toEqual(service.episodes);
+      });
     });
   });
 
-  it('should get an episode by id (HTTP)', () => {
-    const episode: Episode = episodesJson.results[0];
-    httpClientSpy.get.and.returnValue(of(episode));
+  describe('getById()', () => {
+    it('should get an episode by id (HTTP)', () => {
+      const episode: Episode = episodesJson.results[0];
+      httpClientSpy.get.and.returnValue(of(episode));
 
-    service.getById(episode.id).subscribe(data => {
-      expect(data).toEqual(episode);
+      service.getById(episode.id).subscribe(data => {
+        expect(data).toEqual(episode);
+      });
+    });
+
+    it('getById() should throw error on unsuccessful request (HTTP)', () => {
+      const episode: Episode = episodesJson.results[0];
+      httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
+
+      service.getById(episode.id).subscribe({
+        error: err => {
+          expect(err.status).toEqual(500);
+        }
+      });
     });
   });
 
-  it('getById() should throw error on unsuccessful request (HTTP)', () => {
-    const episode: Episode = episodesJson.results[0];
-    httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
+  describe('findByName()', () => {
+    it('should send request for episode by name (HTTP)', () => {
+      const episode: Episode = episodesJson.results[1];
+      httpClientSpy.get.and.returnValue(of(episode));
 
-    service.getById(episode.id).subscribe({
-      error: err => {
-        expect(err.status).toEqual(500);
-      }
+      service.getByName(episode.name).subscribe(data => {
+        expect(data).toEqual(episode);
+      });
     });
   });
 
@@ -55,15 +70,6 @@ describe('EpisodesService', () => {
     const episode: Episode = episodesJson.results[1];
     service.episodes = episodesJson.results;
     expect(service.findByName('Lawnmower Dog')).toEqual(episode);
-  });
-
-  it('should send request for episode by name (HTTP)', () => {
-    const episode: Episode = episodesJson.results[1];
-    httpClientSpy.get.and.returnValue(of(episode));
-
-    service.getByName(episode.name).subscribe(data => {
-      expect(data).toEqual(episode);
-    });
   });
 });
 
