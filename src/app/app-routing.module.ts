@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { EpisodePageComponent } from './episodes/episode-page/episode-page.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { EpisodesListComponent } from './episodes/episodes-list/episodes-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: EpisodesListComponent
-  },
   {
     path: 'home',
     redirectTo: '/'
   },
   {
-    path: 'episodes/:id',
+    path: 'episodes',
     loadChildren: () => import('./episodes/episodes.module').then(m => m.EpisodesModule),
-    component: EpisodePageComponent
+    component: EpisodesListComponent
   }
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(
+      routes,
+      {
+        preloadingStrategy: PreloadAllModules
+      }
+      ),
     CommonModule
   ],
   exports: [RouterModule]

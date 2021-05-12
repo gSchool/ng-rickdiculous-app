@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EpisodesService } from '../../services/episodes.service';
 import { Episode } from '../../models/episode';
 
 @Component({
@@ -10,14 +9,12 @@ import { Episode } from '../../models/episode';
 })
 export class EpisodePageComponent implements OnInit {
   public episode: Episode;
-  public episodeId: number;
 
-  constructor(private route: ActivatedRoute,
-              private service: EpisodesService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // tslint:disable-next-line:radix
-    this.episodeId = +this.route.snapshot.paramMap.get('id');
-    this.service.getById(this.episodeId).subscribe(episode => this.episode = episode );
+    this.route.data.subscribe((data: { episode: Episode }) => {
+      this.episode = data.episode;
+    });
   }
 }

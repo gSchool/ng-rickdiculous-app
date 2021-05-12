@@ -19,6 +19,4 @@ export class EpisodeResolverService implements Resolve<any>{
         mergeMap(episode => of(episode))
       );
   }
-
-
 }
