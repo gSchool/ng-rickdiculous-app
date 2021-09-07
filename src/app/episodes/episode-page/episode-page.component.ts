@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Episode } from '../../models/episode';
 
+/**
+ * Page displays: episode info, characters list for the episode and location
+ */
 @Component({
   selector: 'app-episode-page',
   templateUrl: './episode-page.component.html',

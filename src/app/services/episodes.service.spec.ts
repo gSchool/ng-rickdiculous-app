@@ -14,7 +14,6 @@ describe('EpisodesService', () => {
   let httpClientSpy: { get: jasmine.Spy };
 
   beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({});
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     service = new EpisodesService(httpClientSpy as any);
   }));
@@ -55,13 +54,24 @@ describe('EpisodesService', () => {
     });
   });
 
-  describe('findByName()', () => {
+  describe('getByName()', () => {
     it('should send request for episode by name (HTTP)', () => {
       const episode: Episode = episodesJson.results[1];
       httpClientSpy.get.and.returnValue(of(episode));
 
       service.getByName(episode.name).subscribe(data => {
-        expect(data).toEqual(episode);
+        expect(data.results[0]).toEqual(episode);
+      });
+    });
+
+    it('should throw error on unsuccessful request (HTTP)', () => {
+      const episode: Episode = episodesJson.results[1];
+      httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
+
+      service.getByName(episode.name).subscribe({
+        error: err => {
+          expect(err.status).toEqual(500);
+        }
       });
     });
   });

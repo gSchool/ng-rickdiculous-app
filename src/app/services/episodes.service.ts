@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Episode } from '../models/episode';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
+import {catchError, finalize, tap} from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 import EpicFailError from '../shared/epic-fail.error';
 
@@ -24,7 +24,7 @@ export class EpisodesService {
   constructor(private http: HttpClient) { }
 
   all(): Observable<ApiRicksponse>{
-    return this.http.get<any>(this.url)
+    return this.http.get<ApiRicksponse>(this.url)
       .pipe(
         tap(
           data => {
@@ -35,8 +35,8 @@ export class EpisodesService {
       );
   }
 
-  getById(episodeId: number): Observable<any> {
-    return this.http.get<ApiRicksponse>(this.url + episodeId)
+  getById(episodeId: number): Observable<Episode> {
+    return this.http.get<Episode>(this.url + episodeId)
       .pipe(
         catchError((err: HttpErrorResponse) => {
           throw new EpicFailError(err);
@@ -48,7 +48,12 @@ export class EpisodesService {
     return this.episodes.filter(episode => episode.name === episodeName)[0];
   }
 
-  getByName(episodeName: string): Observable<any> {
-    return this.http.get<ApiRicksponse>(`${this.url}/?=${episodeName}`);
+  getByName(episodeName: string): Observable<ApiRicksponse> {
+    return this.http.get<ApiRicksponse>(`${this.url}/?=${episodeName}`)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw new EpicFailError(err);
+        })
+      );
   }
 }

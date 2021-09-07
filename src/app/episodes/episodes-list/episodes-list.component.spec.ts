@@ -4,6 +4,7 @@ import { EpisodesListComponent } from './episodes-list.component';
 import { EpisodesService } from '../../services/episodes.service';
 import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
 import MockEpisodesService from '../../services/MockEpisodesService';
+import { By } from '@angular/platform-browser';
 
 describe('EpisodesListComponent', () => {
   let component: EpisodesListComponent;
@@ -33,8 +34,9 @@ describe('EpisodesListComponent', () => {
     expect(component.episodes).toBeDefined();
   });
 
-  it('should render episode template', () => {
-    expect(html.querySelector('app-episode-detail')).toBeDefined();
+  it('should render episodes', () => {
+    const episodeElements = fixture.debugElement.queryAll(By.directive(EpisodeDetailComponent));
+    expect(episodeElements.length).toEqual(1);
   });
 
   it('should fetch episodes from service', () => {
