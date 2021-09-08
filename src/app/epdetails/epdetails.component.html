@@ -14,11 +14,11 @@
 </ul>
 
 <div class="card">
-  <div class ="container">
-    <div>Episode #: {{id}}</div>
-    <div>Title: {{name}}</div>
-    <div>Aired: {{air_date}}</div>
-    <div>{{episode}}</div>
+  <div class ="container " *ngIf = "episode">
+    <div>Episode #: {{episode.id}}</div>
+    <div>Title: {{episode.name}}</div>
+    <div>Aired: {{episode.air_date}}</div>
+    <div>{{episode.episode}}</div>
   </div>
 </div>
 

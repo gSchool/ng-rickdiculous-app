@@ -1,33 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { RicknmortyService } from '../allepisode.service';
 import { Episode } from '../episode';
+
+
+interface Response  {
+  info: any
+  results: Episode[]
+}
+
 @Component({
   selector: 'app-episodelist',
   templateUrl: './episodelist.component.html',
-  styleUrls: ['./episodelist.component.css']
+  styleUrls: ['./episodelist.component.css'],
 })
 export class EpisodelistComponent implements OnInit {
-public episodes: Episode[]
-public epholder: Episode
-  constructor(private episodeservice: RicknmortyService) { }
+  public episodes: Response["results"]
+  public epholder: Response["results"]
+  constructor(private episodeservice: RicknmortyService) {}
 
   ngOnInit(): void {
-
-    this.episodeservice.allepisodes().subscribe(data => this.episodes = data);
-
-
+    console.log('Before subscribe')
+    this.episodeservice.allepisodes().subscribe(data => {
+      console.log('Suscribing...')
+      this.episodes = data.results;
+    }
+      );
   }
 
 
-  storeEpisode(index: number): void{
-    index++;
-   this.episodeservice.singleepisode(index.toString()).subscribe(data => this.epholder = data);
-  }
 
-  fetchEpisode(): Episode {
-    return this.epholder
-  }
 
+
+  // // storeEpisode(index: number): void {
+  // //   index++;
+  // //   this.episodeservice.singleepisode(index.toString()).subscribe(data =>{
+  // //     console.log('Stored Episode', data)
+  // //     this.epholder = data.results
+
+
+  //   });
+  // }
+
+  fetchEpisode(): Response["results"]{
+    return this.epholder;
+  }
 }
-
-

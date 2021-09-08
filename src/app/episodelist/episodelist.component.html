@@ -14,10 +14,10 @@
   </li>
 </ul>
 
-  <div *ngFor = "let episode of episodes; index as i">
+  <div *ngFor = "let episode of episodes;">
     <div class="card">
       <div class ="container">
-        <a class="router-link active" routerLink = "epdetails" (click) = storeEpisode(i)  >{{episode.name}}</a>
+        <a class="router-link active" [routerLink] = "['epdetails', episode.id]" >{{episode.name}}</a>
       </div>
     </div>
   </div>
