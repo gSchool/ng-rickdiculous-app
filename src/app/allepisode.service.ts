@@ -17,8 +17,7 @@ export class RicknmortyService {
   private url = 'https://rickandmortyapi.com/api/episode';
   episodeHolder: Observable<Episode>;
   episodesHolder: Observable<Response>;
-  info: {};
-  results: [];
+ 
   constructor(private http: HttpClient) {}
 
   allepisodes(): Observable<Response> {
@@ -42,7 +41,5 @@ export class RicknmortyService {
     return this.episodeHolder;
   }
 
-  fetchEpisode() {
-    return this.episodeHolder;
-  }
+
 }

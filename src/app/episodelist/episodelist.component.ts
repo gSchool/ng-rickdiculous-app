@@ -16,6 +16,7 @@ interface Response  {
 export class EpisodelistComponent implements OnInit {
   public episodes: Response["results"]
   public epholder: Response["results"]
+  component: { id: number; name: string; air_date: string; episode: string; characters: string[]; url: string; created: string; };
   constructor(private episodeservice: RicknmortyService) {}
 
   ngOnInit(): void {

@@ -13,6 +13,7 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router'
 })
 export class EpdetailsComponent implements OnInit {
    episode : Episode;
+   characters: any [];
   constructor(private episodeservice: RicknmortyService, private route: ActivatedRoute, private router: Router) {
 
   }
@@ -22,7 +23,7 @@ export class EpdetailsComponent implements OnInit {
      {
 
       let index = p.get('i')
-        this.episodeservice.singleepisode(index.toString()).subscribe(data =>
+        this.episodeservice.singleepisode(index).subscribe(data =>
           {
             this.episode = data;
           }
