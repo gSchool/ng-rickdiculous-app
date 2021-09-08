@@ -5,6 +5,7 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
 import { EpisodePageComponent } from './episode-page/episode-page.component';
 import { EpisodeRoutingModule } from './episode-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {CharactersModule} from '../characters/characters.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     EpisodeRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CharactersModule
   ],
   exports: [ ]
 })

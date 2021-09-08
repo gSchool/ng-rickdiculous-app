@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { EpisodeResolverService } from './episode-resolver.service';
 import {EpisodesService} from '../services/episodes.service';
-import MockEpisodesService from '../services/MockEpisodesService';
+import MockEpisodesService from '../services/mock-episodes.service';
 
 describe('PageResolverService', () => {
   let service: EpisodeResolverService;

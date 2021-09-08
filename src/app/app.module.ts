@@ -8,19 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { EpisodesModule } from './episodes/episodes.module';
+import { CharactersModule } from './characters/characters.module';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     SearchFormComponent,
-    SideMenuComponent,
+    SideMenuComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    EpisodesModule
+    EpisodesModule,
+    CharactersModule
   ],
   providers: [],
   bootstrap: [ LandingPageComponent ]

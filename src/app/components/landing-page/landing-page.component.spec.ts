@@ -6,7 +6,7 @@ import { EpisodesListComponent } from '../../episodes/episodes-list/episodes-lis
 import {ApiRicksponse, EpisodesService} from '../../services/episodes.service';
 import { EpisodeDetailComponent } from '../../episodes/episode-detail/episode-detail.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import MockEpisodesService from '../../services/MockEpisodesService';
+import MockEpisodesService from '../../services/mock-episodes.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 const apiResponse: ApiRicksponse = {info: {}, results: [{name: 'Ricksty', episode: 'TEST02', id: 123, air_date: 'May 1, 2014', characters: []}]};

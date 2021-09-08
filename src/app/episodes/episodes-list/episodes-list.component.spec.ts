@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { EpisodesListComponent } from './episodes-list.component';
 import { EpisodesService } from '../../services/episodes.service';
 import { EpisodeDetailComponent } from '../episode-detail/episode-detail.component';
-import MockEpisodesService from '../../services/MockEpisodesService';
+import MockEpisodesService from '../../services/mock-episodes.service';
 import { By } from '@angular/platform-browser';
 
 describe('EpisodesListComponent', () => {
