@@ -4,7 +4,7 @@ import { EpisodeResolverService } from './episode-resolver.service';
 import {EpisodesService} from '../services/episodes.service';
 import MockEpisodesService from '../services/mock-episodes.service';
 
-describe('PageResolverService', () => {
+describe('EpisodeResolverService', () => {
   let service: EpisodeResolverService;
 
   beforeEach(() => {
