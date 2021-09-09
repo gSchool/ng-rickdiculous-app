@@ -1,90 +1,15 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
-import { EpisodesService, episodesUrl } from './episodes.service';
+import { ApiRicksponse, EpisodesService, episodesUrl } from './episodes.service';
 import { of, throwError } from 'rxjs';
 import { Episode } from '../models/episode';
-import episodesJson from '../data/ram_episodes.json';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import EpicFailError from '../shared/epic-fail.error';
 
-const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
+// tslint:disable-next-line:max-line-length
+const apiResponse: ApiRicksponse = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, air_date: 'May 1, 2014', characters: []}]};
 
-describe('EpisodesService', () => {
-  let service: EpisodesService;
-  let httpClientSpy: { get: jasmine.Spy };
-
-  beforeEach(waitForAsync(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new EpisodesService(httpClientSpy as any);
-  }));
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  describe('getAll()', () => {
-    it('should get list of all episodes (HTTP)', () => {
-      httpClientSpy.get.and.returnValue(of(apiResponse));
-
-      service.all().subscribe(data => {
-        expect(data.results).toEqual(service.episodes);
-      });
-    });
-  });
-
-  describe('getById()', () => {
-    it('should get an episode by id (HTTP)', () => {
-      const episode: Episode = episodesJson.results[0];
-      httpClientSpy.get.and.returnValue(of(episode));
-
-      service.getById(episode.id).subscribe(data => {
-        expect(data).toEqual(episode);
-      });
-    });
-
-    it('getById() should throw error on unsuccessful request (HTTP)', () => {
-      const episode: Episode = episodesJson.results[0];
-      httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
-
-      service.getById(episode.id).subscribe({
-        error: err => {
-          expect(err.status).toEqual(500);
-        }
-      });
-    });
-  });
-
-  describe('getByName()', () => {
-    it('should send request for episode by name (HTTP)', () => {
-      const episode: Episode = episodesJson.results[1];
-      httpClientSpy.get.and.returnValue(of(episode));
-
-      service.getByName(episode.name).subscribe(data => {
-        expect(data.results[0]).toEqual(episode);
-      });
-    });
-
-    it('should throw error on unsuccessful request (HTTP)', () => {
-      const episode: Episode = episodesJson.results[1];
-      httpClientSpy.get.and.returnValue(throwError(new EpicFailError({status: 500, statusText: 'Server error'})));
-
-      service.getByName(episode.name).subscribe({
-        error: err => {
-          expect(err.status).toEqual(500);
-        }
-      });
-    });
-  });
-
-  it('should search for episodes by name', () => {
-    const episode: Episode = episodesJson.results[1];
-    service.episodes = episodesJson.results;
-    expect(service.findByName('Lawnmower Dog')).toEqual(episode);
-  });
-});
-
-
-describe('EpisodesService (alt)', () => {
+describe('EpisodesService HTTP', () => {
   let service: EpisodesService;
   let httpTestController: HttpTestingController;
 
@@ -117,5 +42,13 @@ describe('EpisodesService (alt)', () => {
     httpTestController.verify();
     expect(epicFail.status).toEqual(500);
     expect(success).toBeNull();
+  });
+
+  xit('getByName() should return episode on success', () => {
+
+  });
+
+  xit('getByName() should epicly fail on unsuccessful request', () => {
+
   });
 });

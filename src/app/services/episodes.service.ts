@@ -49,7 +49,7 @@ export class EpisodesService {
   }
 
   getByName(episodeName: string): Observable<ApiRicksponse> {
-    return this.http.get<ApiRicksponse>(`${this.url}/?=${episodeName}`)
+    return this.http.get<ApiRicksponse>(`${this.url}/?name=${episodeName}`)
       .pipe(
         catchError((err: HttpErrorResponse) => {
           throw new EpicFailError(err);
