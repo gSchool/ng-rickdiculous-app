@@ -1,4 +1,9 @@
 .grid-container {
   display: grid;
+
+}
+.container-fluid{
+  justify-content: center;
+  align-items: center;
 }
 

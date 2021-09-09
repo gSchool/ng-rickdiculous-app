@@ -1,10 +1,11 @@
-<div class="container episode" *ngIf = "episode" >
+<div style="color:rgb(96, 204, 7); background-color: rgba(0, 0, 255, 0.384); font-size:larger; width:fit-content;"class="container-fluid episode" *ngIf = "episode" >
   <div>Episode #: {{ episode.id }}</div>
   <div>Title: {{ episode.name }}</div>
   <div>Aired: {{ episode.air_date }}</div>
   <div>{{ episode.episode }}</div>
-  <app-epdetailscharacters [input] =  episode.characters ></app-epdetailscharacters>
-  </div>
+</div>
+<app-epdetailscharacters [input] =  episode.characters ></app-epdetailscharacters>
+
 
 
 
