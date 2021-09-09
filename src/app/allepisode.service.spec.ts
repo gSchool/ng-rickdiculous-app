@@ -14,7 +14,7 @@ describe('RicknmortyService', () => {
   let service: RicknmortyService;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  
+
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('RicknmortyService', () => {
     service = TestBed.inject(RicknmortyService);
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
-
+    
 
   });
 

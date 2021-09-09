@@ -1,20 +1,12 @@
-<div class="container episode" >
+<div class="container episode" *ngIf = "episode" >
   <div>Episode #: {{ episode.id }}</div>
   <div>Title: {{ episode.name }}</div>
   <div>Aired: {{ episode.air_date }}</div>
   <div>{{ episode.episode }}</div>
+  <app-epdetailscharacters [input] =  episode.characters ></app-epdetailscharacters>
   </div>
-  <!-- *ngFor = "let character of characters;" -->
-  <div>Characters:</div>
-  <div class="grid-container">
-    <div class = "characters" *ngFor="let character of episode.characters">
-      <div class="grid-item">
-        <img id = "image"  src="{{character.slice(0, 41) + '/avatar/' + character.slice(42) + '.jpeg'}} "width="100"height="100"/>
-      <!-- <img src ="{{character.slice(0,41)+'/avatar/'+character.slice(42)+('.jpeg')}} " width="100" height="100"> -->
-    </div>
-  </div>
-  </div>
-  <!-- <div *ngFor = "let character of episode.characters;">
-      <div><br><img src ="{{character.slice(0,41)+'/avatar/'+character.slice(42)+('.jpeg')}} " width="100" height="100"></div>
-    </div> -->
+
+
+
+
 

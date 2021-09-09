@@ -17,21 +17,12 @@ export class RicknmortyService {
   private url = 'https://rickandmortyapi.com/api/episode';
   episodeHolder: Observable<Episode>;
   episodesHolder: Observable<Response>;
- 
+
   constructor(private http: HttpClient) {}
 
   allepisodes(): Observable<Response> {
     this.episodesHolder = this.http.get<Response>(this.url);
     return this.episodesHolder;
-    // .pipe(
-    //   tap(
-    //     data => {
-    //       this.episodesHolder.results = data.results;
-    //       this.info = data.info;
-    //     }
-
-    //   )
-    // )
   }
 
   singleepisode(id: string): Observable<Episode> {

@@ -16,7 +16,7 @@ interface Response  {
 export class EpisodelistComponent implements OnInit {
   public episodes: Response["results"]
   public epholder: Response["results"]
-  component: { id: number; name: string; air_date: string; episode: string; characters: string[]; url: string; created: string; };
+  
   constructor(private episodeservice: RicknmortyService) {}
 
   ngOnInit(): void {
@@ -27,20 +27,6 @@ export class EpisodelistComponent implements OnInit {
     }
       );
   }
-
-
-
-
-
-  // // storeEpisode(index: number): void {
-  // //   index++;
-  // //   this.episodeservice.singleepisode(index.toString()).subscribe(data =>{
-  // //     console.log('Stored Episode', data)
-  // //     this.epholder = data.results
-
-
-  //   });
-  // }
 
   fetchEpisode(): Response["results"]{
     return this.epholder;

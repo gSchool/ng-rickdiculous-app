@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RicknmortyService } from '../allepisode.service';
 import { Episode } from '../episode';
 import { EpisodelistComponent } from '../episodelist/episodelist.component';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router'
-
+import { EpdetailscharactersComponent } from '../epdetailscharacters/epdetailscharacters.component';
 
 @Component({
   selector: 'app-epdetails',
@@ -13,7 +13,7 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router'
 })
 export class EpdetailsComponent implements OnInit {
    episode : Episode;
-   characters: String [];
+   characters: string [];
   constructor(private episodeservice: RicknmortyService, private route: ActivatedRoute) {
 
   }
@@ -25,15 +25,7 @@ export class EpdetailsComponent implements OnInit {
                 this.episode = data;
               }
             )
-  //   this.route.paramMap.subscribe((p: ParamMap) =>
-  //    {
 
-  //     let index = p.get('i')
-  //       this.episodeservice.singleepisode(index).subscribe(data =>
-  //         {
-  //           this.episode = data;
-  //         }
-  //       )
-  //   })
+
   }
 }

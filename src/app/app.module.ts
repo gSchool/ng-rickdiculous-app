@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule, RouterLink } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { EpdetailsComponent } from './epdetails/epdetails.component';
+import { EpdetailscharactersComponent } from './epdetailscharacters/epdetailscharacters.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EpisodelistComponent,
     EpdetailsComponent,
+    EpdetailscharactersComponent,
   ],
   imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule],
   providers: [],
