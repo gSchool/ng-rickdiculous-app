@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { ApiMortysponse } from './mock-characters.service';
 import { environment as env } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import {Character} from '../models/character';
+import { Character } from '../models/character';
 
-export const charactersUrl = env + '/character';
+export const charactersUrl = env.apiUrl + '/character';
 
 @Injectable({
   providedIn: 'root'

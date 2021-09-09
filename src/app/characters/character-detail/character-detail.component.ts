@@ -9,12 +9,14 @@ import {CharactersService} from '../../services/characters.service';
 })
 export class CharacterDetailComponent implements OnInit {
   @Input() public url: string;
-  public character: Character;
+  @Input() public character: Character;
 
   constructor(private service: CharactersService) { }
 
   ngOnInit(): void {
-    this.service.getByUrl(this.url).subscribe(character => this.character = character);
+    if (this.url) {
+      this.service.getByUrl(this.url).subscribe(character => this.character = character);
+    }
   }
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { EpisodesListComponent } from './episodes/episodes-list/episodes-list.component';
+import { CharacterListComponent } from './characters/character-list/character-list.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
     path: 'episodes',
     loadChildren: () => import('./episodes/episodes.module').then(m => m.EpisodesModule),
     component: EpisodesListComponent
+  },
+  {
+    path: 'characters',
+    loadChildren: () => import('./characters/characters.module').then(m => m.CharactersModule),
+    component: CharacterListComponent
   }
 ];
 
