@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EpisodelistComponent } from './episodelist/episodelist.component';
 import { EpdetailsComponent } from './epdetails/epdetails.component';
+import { SearchformComponent } from './searchform/searchform.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'episodelist', component: EpisodelistComponent },
   { path: 'episodelist/epdetails/:id', component: EpdetailsComponent },
   { path: 'home/epdetails', component: EpdetailsComponent },
+  { path: 'searchform', component: SearchformComponent}
 ];
 @NgModule({
   declarations: [],

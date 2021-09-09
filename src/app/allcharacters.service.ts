@@ -34,6 +34,8 @@ export class RicknmortyCharacterService {
     return this.characterHolder;
   }
 
+  
+
 
 
 

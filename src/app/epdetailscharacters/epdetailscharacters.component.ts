@@ -18,7 +18,8 @@ export class EpdetailscharactersComponent implements OnInit {
 
   constructor(private characterservice: RicknmortyCharacterService) { }
 
-  public characterimg: string[] =  [];
+  charidfromurl: string = '';
+  public characterimg: string[] = [];
   @Input() input : string[];
 
 
@@ -27,22 +28,21 @@ export class EpdetailscharactersComponent implements OnInit {
 
     for(let characterurl of this.input)
     {
-        this.characterservice.singlecharacter(characterurl.slice(42)).subscribe(data => {
+      //obtaining character urls from epdetail component and slicing out the id to retreive the image
+        this.charidfromurl = characterurl.slice(42)
+        this.characterservice.singlecharacter(this.charidfromurl).subscribe(data => {
           console.log(data.image)
 
           this.characterimg.unshift(data.image);
       })
 
-      // this.characterservice.singlecharacter(characterurl.slice(42)).pipe(tap(
-
-      //   data =>  console.log(data.image) )
-
-      // )
 
 
     }
 
   }
+
+
 
 
 }

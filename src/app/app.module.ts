@@ -8,6 +8,8 @@ import { Routes, RouterModule, RouterLink } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { EpdetailsComponent } from './epdetails/epdetails.component';
 import { EpdetailscharactersComponent } from './epdetailscharacters/epdetailscharacters.component';
+import { SearchformComponent } from './searchform/searchform.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,8 +17,9 @@ import { EpdetailscharactersComponent } from './epdetailscharacters/epdetailscha
     EpisodelistComponent,
     EpdetailsComponent,
     EpdetailscharactersComponent,
+    SearchformComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule,FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
