@@ -5,7 +5,7 @@ import { environment as env } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Character } from '../models/character';
 
-export const charactersUrl = env.apiUrl + '/character';
+export const charactersUrl = env.apiUrl + 'character/';
 
 @Injectable({
   providedIn: 'root'

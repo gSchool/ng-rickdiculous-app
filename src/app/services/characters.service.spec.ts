@@ -34,12 +34,12 @@ describe('CharactersService', () => {
   });
 
   it('getByUrl() should return character', () => {
-    service.getByUrl(charactersUrl + '/1000').subscribe(character => {
-      expect(character).toEqual(apiResponse.results[0]);
+    service.getByUrl(charactersUrl + '1000').subscribe(data => {
+      expect(data).toEqual(apiResponse.results[0]);
     }); // start request
 
-    const res = httpTestController.expectOne(charactersUrl);
-    res.flush(apiResponse);
+    const res = httpTestController.expectOne(charactersUrl + '1000');
+    res.flush(apiResponse.results[0]);
     httpTestController.verify(); // assertion; expects one request to url above
   });
 
@@ -48,8 +48,8 @@ describe('CharactersService', () => {
       expect(character).toEqual(apiResponse.results[0]);
     }); // start request
 
-    const res = httpTestController.expectOne(charactersUrl);
-    res.flush(apiResponse);
+    const res = httpTestController.expectOne(charactersUrl + '1000');
+    res.flush(apiResponse.results[0]);
     httpTestController.verify(); // assertion; expects one request to url above
 
   });
