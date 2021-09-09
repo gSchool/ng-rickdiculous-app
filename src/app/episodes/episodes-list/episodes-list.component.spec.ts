@@ -46,4 +46,11 @@ describe('EpisodesListComponent', () => {
   it('should render episodes in a flexible row', () => {
     expect(html.querySelector('.row')).toBeTruthy();
   });
+
+  it('should render loading bar if no episodes to render', () => {
+    component.episodes = [];
+    fixture.detectChanges();
+    const loadingEl = fixture.nativeElement.querySelector('progress');
+    expect(loadingEl).not.toBeNull();
+  });
 });
