@@ -17,10 +17,10 @@ export class EpisodeResolverService implements Resolve<Episode>{
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     const episodeId: number = +route.paramMap.get('id');
 
-    return this.service.getById(episodeId);
-      // .pipe(
-      //   take(1),
-      //   mergeMap(episode => of(episode))
-      // );
+    return this.service.getById(episodeId)
+      .pipe(
+        take(1),
+        mergeMap(episode => of(episode))
+      );
   }
 }

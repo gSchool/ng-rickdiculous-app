@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EpisodesService } from '../../services/episodes.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('EpisodePageComponent', () => {
   let component: EpisodePageComponent;
@@ -17,21 +18,21 @@ describe('EpisodePageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     episode = createEpisode();
+    mockActivatedroute = { data: of(episode) };
     mockService = jasmine.createSpyObj(['getById']);
-    mockActivatedroute = { snapshot: { paramMap: { get: () => '1' }}};
+    mockService.getById.and.returnValue(of(episode));
 
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule, HttpClientTestingModule ],
       declarations: [ EpisodePageComponent ],
       providers: [
-        { provider: EpisodesService, useValue: mockService },
-        { provider: ActivatedRoute, useValue: mockActivatedroute }
+        { provide: EpisodesService, useValue: mockService },
+        { provide: ActivatedRoute, useValue: mockActivatedroute }
       ]}).compileComponents();
 
     fixture = TestBed.createComponent(EpisodePageComponent);
     component = fixture.componentInstance;
     html = fixture.nativeElement;
-    mockService.getById.and.returnValue(episode);
     fixture.autoDetectChanges();
   }));
 
