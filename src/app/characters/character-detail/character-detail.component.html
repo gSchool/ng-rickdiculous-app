@@ -1,5 +1,5 @@
-<div class="col-sm py-2">
-  <div class="card">
+<div class="col-sm py-2" *ngIf="character; else loading">
+  <div class="card character">
     <div class="card-img">
       <img [src]="character.image" [alt]="character.name" class="characterThumb" />
     </div>
@@ -13,3 +13,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <progress></progress>
+</ng-template>
