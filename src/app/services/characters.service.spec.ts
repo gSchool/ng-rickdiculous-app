@@ -5,7 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ApiMortysponse } from './mock-characters.service';
 
 // tslint:disable-next-line:max-line-length
-const apiResponse: ApiMortysponse = { info: {}, results: [{ id: 1, name: 'Mortysponse 1', status: 'alive', species: 'human', type: '', gender: 'woman', episode: [], image: '', url: '', created: '', location: {}, origin: {}} ]};
+const apiResponse: ApiMortysponse = { info: {}, results: [{ id: 1000, name: 'Mortysponse 1', status: 'alive', species: 'human', type: '', gender: 'woman', episode: [], image: '', url: '', created: '', location: {}, origin: {}} ]};
 
 describe('CharactersService', () => {
   let service: CharactersService;
@@ -23,7 +23,7 @@ describe('CharactersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('all() should send one request to api', () => {
+  it('all() should return all characters', () => {
     service.all().subscribe(response => {
       expect(response).toEqual(apiResponse);
     }); // start request
@@ -32,4 +32,14 @@ describe('CharactersService', () => {
     res.flush(apiResponse);
     httpTestController.verify(); // assertion; expects one request to url above
   });
+
+  it('getByUrl() should return character', () => {
+    service.getByUrl(charactersUrl + '/1000').subscribe(character => {
+      expect(character).toEqual(apiResponse.results[0]);
+    }); // start request
+
+    const res = httpTestController.expectOne(charactersUrl);
+    res.flush(apiResponse);
+    httpTestController.verify(); // assertion; expects one request to url above
+  })
 });

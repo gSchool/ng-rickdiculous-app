@@ -8,6 +8,7 @@ export interface ApiMortysponse {
 
 const character = new Character();
 character.id = 1;
+character.name = 'Rick Test';
 
 export default class MockCharactersService {
   results: ApiMortysponse = { info: {}, results: [{ id: 1, name: 'Mortysponse 1', status: 'alive', species: 'human', type: '', gender: 'woman', episode: [], image: '', url: '', created: '', location: {}, origin: {}} ]};
@@ -17,7 +18,7 @@ export default class MockCharactersService {
     return of(this.results);
   }
 
-  // getById(id: number): Character {
-  //   return character;
-  // }
+  getByUrl(url: string): Observable<Character> {
+    return of(character);
+  }
 }

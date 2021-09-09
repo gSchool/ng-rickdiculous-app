@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ApiMortysponse } from './mock-characters.service';
 import { environment as env } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import {Character} from '../models/character';
 
 export const charactersUrl = env + '/character';
 
@@ -15,5 +16,9 @@ export class CharactersService {
 
   all(): Observable<ApiMortysponse> {
     return this.http.get<ApiMortysponse>(charactersUrl);
+  }
+
+  getByUrl(url: string): Observable<Character> {
+    return this.http.get<Character>(url);
   }
 }

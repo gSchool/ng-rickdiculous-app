@@ -1,6 +1,11 @@
 <div>
-  <h2 *ngIf="episode; else loading">{{ episode.name }}</h2>
-  <app-character-list></app-character-list>
+  <div *ngIf="episode; else loading">
+    <h2 >{{ episode.name }}</h2>
+    <span>{{ episode.episode }} | {{ episode.air_date }}</span>
+
+    <app-character-list [characterUrls]="episode.characters"></app-character-list>
+  </div>
+
 <!--  Style and UX -- not required-->
   <ng-template #loading>
     <progress></progress>
