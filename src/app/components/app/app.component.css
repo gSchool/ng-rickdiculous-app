@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav{
+  background-color: yellowgreen;
+  width: 800px;
+  height:fit-content
+  
+}
+
