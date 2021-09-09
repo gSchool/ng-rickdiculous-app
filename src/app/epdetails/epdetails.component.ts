@@ -13,21 +13,27 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router'
 })
 export class EpdetailsComponent implements OnInit {
    episode : Episode;
-   characters: any [];
-  constructor(private episodeservice: RicknmortyService, private route: ActivatedRoute, private router: Router) {
+   characters: String [];
+  constructor(private episodeservice: RicknmortyService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((p: ParamMap) =>
-     {
+    let episodeid = this.route.snapshot.paramMap.get('id')
+    this.episodeservice.singleepisode(episodeid).subscribe(data =>
+              {
+                this.episode = data;
+              }
+            )
+  //   this.route.paramMap.subscribe((p: ParamMap) =>
+  //    {
 
-      let index = p.get('i')
-        this.episodeservice.singleepisode(index).subscribe(data =>
-          {
-            this.episode = data;
-          }
-        )
-    })
+  //     let index = p.get('i')
+  //       this.episodeservice.singleepisode(index).subscribe(data =>
+  //         {
+  //           this.episode = data;
+  //         }
+  //       )
+  //   })
   }
 }

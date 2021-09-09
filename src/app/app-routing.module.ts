@@ -8,7 +8,7 @@ import { EpdetailsComponent } from './epdetails/epdetails.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'episodelist', component: EpisodelistComponent },
-  { path: 'episodelist/epdetails/:i', component: EpdetailsComponent },
+  { path: 'episodelist/epdetails/:id', component: EpdetailsComponent },
   { path: 'home/epdetails', component: EpdetailsComponent },
 ];
 @NgModule({
