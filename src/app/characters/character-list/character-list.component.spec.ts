@@ -33,10 +33,17 @@ describe('CharacterListComponent', () => {
     component.characters.push(new Character());
     fixture.detectChanges();
     const characterEl = fixture.debugElement.queryAll(By.directive(CharacterDetailComponent));
-    expect(characterEl.length).toEqual(1);
+    expect(characterEl.length).toEqual(2);
   });
 
   it('should fetch characters from service', () => {
     expect(component.characters.length).toEqual(1);
+  });
+
+  it('should render loading bar if no characters to render', () => {
+    component.characters = [];
+    fixture.detectChanges();
+    const loadingEl = fixture.nativeElement.querySelector('progress');
+    expect(loadingEl).not.toBeNull();
   });
 });
