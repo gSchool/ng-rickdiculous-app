@@ -41,5 +41,16 @@ describe('CharactersService', () => {
     const res = httpTestController.expectOne(charactersUrl);
     res.flush(apiResponse);
     httpTestController.verify(); // assertion; expects one request to url above
-  })
+  });
+
+  it('getById() should return a character', () => {
+    service.getById(1000).subscribe(character => {
+      expect(character).toEqual(apiResponse.results[0]);
+    }); // start request
+
+    const res = httpTestController.expectOne(charactersUrl);
+    res.flush(apiResponse);
+    httpTestController.verify(); // assertion; expects one request to url above
+
+  });
 });
