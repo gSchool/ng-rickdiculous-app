@@ -1,4 +1,4 @@
 <div>
   <h3>Characters</h3>
-  <app-character-detail></app-character-detail>
+  <app-character-detail *ngFor="let url of characterUrls" [url]="url"></app-character-detail>
 </div>

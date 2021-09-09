@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Character } from '../../models/character';
-import {CharactersService} from '../../services/characters.service';
+import { CharactersService } from '../../services/characters.service';
 
 @Component({
   selector: 'app-character-list',
@@ -8,6 +8,7 @@ import {CharactersService} from '../../services/characters.service';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
+  @Input() public characterUrls: string[] = [];
   public characters: Character[] = [];
 
   constructor(private characterService: CharactersService) { }
