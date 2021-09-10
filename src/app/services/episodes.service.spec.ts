@@ -44,8 +44,26 @@ describe('EpisodesService HTTP', () => {
     expect(success).toBeNull();
   });
 
-  xit('getByName() should return episode on success', () => {
+  it('getByUrl() should send one request to api', () => {
+    const episode = new Episode();
 
+    service.getByUrl('https://myapp.com/someUrl').subscribe(data => {
+      expect(data).toEqual(episode);
+    }); // start request
+
+    const res = httpTestController.expectOne('https://myapp.com/someUrl');
+    res.flush(episode);
+    httpTestController.verify(); // assertion; expects one request to url above
+  });
+
+  it('getByName() should return episode on success', () => {
+    service.getByName('My Episode').subscribe(data => {
+      expect(data).toEqual(apiResponse);
+    }); // start request
+
+    const res = httpTestController.expectOne(episodesUrl + '?name=My Episode');
+    res.flush(apiResponse);
+    httpTestController.verify(); // assertion; expects one request to url above
   });
 
   xit('getByName() should epicly fail on unsuccessful request', () => {

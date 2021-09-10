@@ -44,16 +44,21 @@ export class EpisodesService {
       );
   }
 
-  findByName(episodeName: string): Episode {
-    return this.episodes.filter(episode => episode.name === episodeName)[0];
+  getByUrl(url: string): Observable<any> {
+    return this.http.get(url);
   }
 
   getByName(episodeName: string): Observable<ApiRicksponse> {
-    return this.http.get<ApiRicksponse>(`${this.url}/?name=${episodeName}`)
+    return this.http.get<ApiRicksponse>(`${this.url}?name=${episodeName}`)
       .pipe(
         catchError((err: HttpErrorResponse) => {
           throw new EpicFailError(err);
         })
       );
   }
+
+  findByName(episodeName: string): Episode {
+    return this.episodes.filter(episode => episode.name === episodeName)[0];
+  }
+
 }
