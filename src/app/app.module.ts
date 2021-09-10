@@ -11,6 +11,7 @@ import { EpdetailscharactersComponent } from './epdetailscharacters/epdetailscha
 import { SearchformComponent } from './searchform/searchform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultsComponent } from './results/results.component';
+import { CharacterlistComponent } from './characterlist/characterlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { ResultsComponent } from './results/results.component';
     EpdetailscharactersComponent,
     SearchformComponent,
     ResultsComponent,
+    CharacterlistComponent,
   ],
   imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule,FormsModule,ReactiveFormsModule],
   providers: [],

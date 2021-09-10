@@ -1,0 +1,20 @@
+<!-- <div id ="eplistc" class="container d-flex flex-column justify-content-center align-items-center height:1100px width:3000px">
+  <div class = "characters" *ngFor="let character of this.characterimgarray">
+  <div class="card ">
+        <div class="grid-item">
+          <img src= "{{character}}" width="100" height="100"/>
+      </div>
+  </div>
+</div>
+</div> -->
+<div class="grid-container d-flex p-1 flex-wrap justify-content-center align-content-center">
+  <div class = "characters" *ngFor="let character of characters">
+    <div>Name: {{ character.name}}</div>
+    <div>Gender: {{ character.gender }}</div>
+    <div>Spieces: {{ character.species }}</div>
+    <div> <img src= "{{character.image}}" width="100" height="100"/>
+  </div>
+</div>
+
+
+

@@ -1,12 +1,27 @@
-
-
-<h1>Results Works!</h1>
-<div id ="eplistc" class="container d-flex flex-column justify-content-center align-items-center height:1100px width:3000px">
-    <div *ngFor = "let episode of episodeResults;" >
-    <div class="card ">
-  
-        <a class="router-link active p-2"  >{{episode.name}}</a>
-  
+<div class="container d-flex justify-content-center align-content-center">
+  <h1>Search Results:</h1>
+  <br />
+  <h1 *ngIf="episodeResults.length === 0">No Results Found</h1>
+</div>
+<div
+  id="eplistc"
+  class="
+    container
+    d-flex
+    flex-column
+    justify-content-center
+    align-items-center
+    height:1100px
+    width:3000px
+  "
+>
+  <div *ngFor="let episode of episodeResults">
+    <div class="card">
+      <a
+        class="router-link active p-2"
+        [routerLink]="['epdetails', episode.id]"
+        >{{ episode.name }}</a
+      >
     </div>
   </div>
-  </div>
+</div>

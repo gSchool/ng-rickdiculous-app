@@ -5,6 +5,7 @@ import { RicknmortyCharacterService } from '../allcharacters.service';
 import { Episode } from '../episode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParamMap } from '@angular/router';
+import { SearchdataService } from '../searchdata.service';
 
 
 interface Response  {
@@ -19,28 +20,28 @@ interface Response  {
 
 export class ResultsComponent implements OnInit {
 
-  public episodes: Response["results"];
+  public episodes: Response["results"] = [];
   public episodeResults: Episode[] = [];
 
   public input : string;
 
-  constructor(private episodeservice: RicknmortyService,private characterservice: RicknmortyCharacterService) { }
+  constructor(private searchservice: SearchdataService,private episodeservice: RicknmortyService,private characterservice: RicknmortyCharacterService) { }
 
   ngOnInit(): void {
 
+    this.input = this.searchservice.getsearch()
     this.episodeservice.allepisodes().subscribe(data => {
-      
       this.episodes = data.results;
+      if(this.input)
+      {
+        for(let episode of this.episodes)
+        {
+          console.log("inside result loop",);
+         if( episode.name.includes(this.input)){this.episodeResults.push(episode);}
+        }
+      }
     });
 
-
-    
-    if(this.input){
-    for(let episode of this.episodes){
-      console.log("inside result loop",);
-     if( episode.name.includes(this.input)){this.episodeResults.push(episode);}
-    }
   }
   }
 
-}

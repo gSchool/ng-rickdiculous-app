@@ -21,7 +21,7 @@ export class EpdetailscharactersComponent implements OnInit {
   charidfromurl: string = '';
   public characterimg: string[] = [];
   @Input() input : string[];
-
+  rowcounter: number
 
   ngOnInit(): void
   {

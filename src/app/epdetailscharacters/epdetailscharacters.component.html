@@ -1,6 +1,8 @@
-<div *ngIf = "characterimg" class="grid-container">
+<div *ngIf = "characterimg" class="grid-container d-flex p-1 flex-wrap justify-content-center align-content-center">
+
   <div class = "characters" *ngFor="let character of this.characterimg">
-    <div class="grid-item">
-      <img src= "{{character}}" width="100" height="100"/>
+    <div class ="grid-item d-flex flex-row"><img src= "{{character}}" width="100" height="100"/></div>
   </div>
 </div>
+
+

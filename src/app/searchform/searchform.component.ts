@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormControl, FormGroup, 
 import { BrowserModule } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParamMap } from '@angular/router';
+import { SearchdataService } from '../searchdata.service';
 @Component({
   selector: 'app-searchform',
   templateUrl: './searchform.component.html',
@@ -12,7 +13,7 @@ export class SearchformComponent implements OnInit {
   public output: string = '';
   searchForm: FormGroup;
 
-  constructor (private router: Router, private formBuilder: FormBuilder)
+  constructor (private searchservice: SearchdataService, private router: Router, private formBuilder: FormBuilder)
   {
 
   }
@@ -28,9 +29,10 @@ export class SearchformComponent implements OnInit {
   }
   onSubmit() : void{
     console.log("FORMGOUP RESULT:",this.searchForm.get('search').value)
+    this.searchservice.input = this.searchForm.get('search').value
     this.router.navigate(['results']);
 
-  
+
 
    }
 

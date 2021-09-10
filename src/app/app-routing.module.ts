@@ -6,6 +6,7 @@ import { EpisodelistComponent } from './episodelist/episodelist.component';
 import { EpdetailsComponent } from './epdetails/epdetails.component';
 import { SearchformComponent } from './searchform/searchform.component';
 import { ResultsComponent } from './results/results.component';
+import { CharacterlistComponent } from './characterlist/characterlist.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
   { path: 'episodelist/epdetails/:id', component: EpdetailsComponent },
   { path: 'home/epdetails', component: EpdetailsComponent },
   { path: 'searchform', component: SearchformComponent},
-  { path: 'results', component: ResultsComponent}
+  { path: 'results', component: ResultsComponent},
+  { path: 'results/epdetails/:id', component: EpdetailsComponent},
+  { path: 'characters', component: CharacterlistComponent}
 ];
 @NgModule({
   declarations: [],
