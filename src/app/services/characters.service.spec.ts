@@ -51,6 +51,5 @@ describe('CharactersService', () => {
     const res = httpTestController.expectOne(charactersUrl + '1000');
     res.flush(apiResponse.results[0]);
     httpTestController.verify(); // assertion; expects one request to url above
-
   });
 });

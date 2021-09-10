@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Episode } from '../models/episode';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {catchError, finalize, tap} from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 import EpicFailError from '../shared/epic-fail.error';
 

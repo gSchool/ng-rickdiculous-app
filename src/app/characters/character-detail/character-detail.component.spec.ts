@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CharacterDetailComponent } from './character-detail.component';
 import { CharactersService } from '../../services/characters.service';
 import MockCharactersService from '../../services/mock-characters.service';
-import {Character} from '../../models/character';
+import { Character } from '../../models/character';
 
 describe('CharacterDetailComponent', () => {
   let component: CharacterDetailComponent;
