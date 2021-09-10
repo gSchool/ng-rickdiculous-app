@@ -24,6 +24,9 @@ import { CharactersModule } from './characters/characters.module';
     EpisodesModule,
     CharactersModule
   ],
+  exports: [
+    EpisodesModule
+  ],
   providers: [],
   bootstrap: [ LandingPageComponent ]
 })

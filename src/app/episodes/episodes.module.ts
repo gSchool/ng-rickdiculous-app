@@ -19,6 +19,8 @@ import {CharactersModule} from '../characters/characters.module';
     HttpClientModule,
     CharactersModule
   ],
-  exports: [ ]
+    exports: [
+        EpisodeDetailComponent
+    ]
 })
 export class EpisodesModule { }

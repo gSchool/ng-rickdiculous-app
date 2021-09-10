@@ -44,8 +44,15 @@ export class EpisodesService {
       );
   }
 
-  getByUrl(url: string): Observable<any> {
-    return this.http.get(url);
+  getByUrl(url: string): Observable<Episode> {
+    return this.http.get<Episode>(url);
+  }
+
+  getEpisodes(episodeUrls: string[]): Episode[] {
+    // return episodeUrls.map(url => (
+    //   this.getByUrl(url).subscribe();
+    // ));
+    return;
   }
 
   getByName(episodeName: string): Observable<ApiRicksponse> {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character } from '../../models/character';
+import { Episode } from '../../models/episode';
+import {EpisodesService} from '../../services/episodes.service';
 
 @Component({
   selector: 'app-character-page',
@@ -9,13 +11,18 @@ import { Character } from '../../models/character';
 })
 export class CharacterPageComponent implements OnInit {
   public character: Character;
+  public episodes: Episode[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private episodeService: EpisodesService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe((data: { character: Character }) => {
       this.character = data.character;
     });
+  }
+
+  getEpisodes(): void {
+    this.episodes = this.episodeService.getEpisodes(this.character.episode);
   }
 
 }
