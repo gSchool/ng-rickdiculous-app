@@ -1,4 +1,4 @@
-import {fakeAsync, flush, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
@@ -13,12 +13,10 @@ describe('App Routes', () => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule, AppRoutingModule ],
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
-  });
+  }));
 
   it('navigate to /home', fakeAsync(() => {
     router.navigate(['home']);

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { CharacterListComponent } from './character-list.component';
-import { By } from '@angular/platform-browser';
-import {Character} from '../../models/character';
-import {CharacterDetailComponent} from '../character-detail/character-detail.component';
-import {CharactersService} from '../../services/characters.service';
+import { Character } from '../../models/character';
+import { CharacterDetailComponent } from '../character-detail/character-detail.component';
+import { CharactersService } from '../../services/characters.service';
 import MockCharactersService from '../../services/mock-characters.service';
 
 describe('CharacterListComponent', () => {

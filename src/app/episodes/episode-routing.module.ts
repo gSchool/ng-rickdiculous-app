@@ -7,15 +7,15 @@ import { EpisodeResolverService } from '../shared/episode-resolver.service';
 
 const routes: Routes = [
   {
-    path: '',
-    component: EpisodesListComponent
-  },
-  {
     path: 'episodes/:id',
     component: EpisodePageComponent,
     resolve: {
       episode: EpisodeResolverService
     }
+  },
+  {
+    path: '',
+    component: EpisodesListComponent
   }
 ];
 

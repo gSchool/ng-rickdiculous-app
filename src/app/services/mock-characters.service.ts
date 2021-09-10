@@ -21,4 +21,8 @@ export default class MockCharactersService {
   getByUrl(url: string): Observable<Character> {
     return of(character);
   }
+
+  getById(id: number): Observable<Character> {
+    return of(character);
+  }
 }

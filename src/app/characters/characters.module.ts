@@ -4,6 +4,7 @@ import { CharacterListComponent } from './character-list/character-list.componen
 import { CharacterDetailComponent } from './character-detail/character-detail.component';
 import { RouterModule } from '@angular/router';
 import { CharacterPageComponent } from './character-page/character-page.component';
+import { CharacterRoutingModule } from './character-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CharacterPageComponent } from './character-page/character-page.componen
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    CharacterRoutingModule
   ]
 })
 export class CharactersModule { }

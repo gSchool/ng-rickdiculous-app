@@ -20,7 +20,7 @@ export class CharacterResolverService {
     return this.service.getById(characterId)
       .pipe(
         take(1),
-        mergeMap(episode => of(episode))
+        mergeMap(character => of(character))
       );
   }
 }
