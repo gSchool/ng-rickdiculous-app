@@ -5,13 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { EpisodelistComponent } from './episodelist/episodelist.component';
 import { EpdetailsComponent } from './epdetails/epdetails.component';
 import { SearchformComponent } from './searchform/searchform.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'episodelist', component: EpisodelistComponent },
   { path: 'episodelist/epdetails/:id', component: EpdetailsComponent },
   { path: 'home/epdetails', component: EpdetailsComponent },
-  { path: 'searchform', component: SearchformComponent}
+  { path: 'searchform', component: SearchformComponent},
+  { path: 'results', component: ResultsComponent}
 ];
 @NgModule({
   declarations: [],

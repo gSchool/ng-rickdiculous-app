@@ -33,15 +33,7 @@ describe('SearchformComponent', () => {
     searchField.setValue('hello')
     btn.click
     fixture.detectChanges;
-    expect(searchField.valid).toBeTruthy();
-
-  // it('if invalid email, button unclickable(disabled)', () => {
-  //     const emailField = component.loginForm.controls.email;
-  //     emailField.setValue('bademaili');
-  //     fixture.detectChanges;
-  //     expect(element.querySelector('#loginBtn').disabled).toBeTrue();
-  //   });
-
+    expect(searchField.value).toEqual('hello');
   });
 
 });

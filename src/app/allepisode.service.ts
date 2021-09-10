@@ -25,6 +25,8 @@ export class RicknmortyService {
     return this.episodesHolder;
   }
 
+
+  
   singleepisode(id: string): Observable<Episode> {
     this.episodeHolder = this.http.get<Episode>(
       'https://rickandmortyapi.com/api/episode/' + id

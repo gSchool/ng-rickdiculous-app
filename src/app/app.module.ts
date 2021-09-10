@@ -10,6 +10,7 @@ import { EpdetailsComponent } from './epdetails/epdetails.component';
 import { EpdetailscharactersComponent } from './epdetailscharacters/epdetailscharacters.component';
 import { SearchformComponent } from './searchform/searchform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResultsComponent } from './results/results.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EpdetailsComponent,
     EpdetailscharactersComponent,
     SearchformComponent,
+    ResultsComponent,
   ],
   imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule,FormsModule,ReactiveFormsModule],
   providers: [],

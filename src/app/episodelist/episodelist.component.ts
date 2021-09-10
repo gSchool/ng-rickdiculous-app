@@ -20,9 +20,9 @@ export class EpisodelistComponent implements OnInit {
   constructor(private episodeservice: RicknmortyService) {}
 
   ngOnInit(): void {
-    console.log('Before subscribe')
+    // console.log('Before subscribe')
     this.episodeservice.allepisodes().subscribe(data => {
-      console.log('Suscribing...')
+      // console.log('Suscribing...')
       this.episodes = data.results;
     }
       );
