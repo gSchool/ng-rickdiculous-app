@@ -2,5 +2,7 @@
   <h2>{{ character.name }}</h2>
   <img [src]="character.image" [alt]="character.name" />
   <h3>Episodes</h3>
-  <div *ngFor="let episode of episodes"></div>
+  <div *ngFor="let url of character.episode">
+    {{ url }}
+  </div>
 </div>

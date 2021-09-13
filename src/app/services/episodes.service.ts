@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { Episode } from '../models/episode';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
@@ -46,13 +46,6 @@ export class EpisodesService {
 
   getByUrl(url: string): Observable<Episode> {
     return this.http.get<Episode>(url);
-  }
-
-  getEpisodes(episodeUrls: string[]): Episode[] {
-    // return episodeUrls.map(url => (
-    //   this.getByUrl(url).subscribe();
-    // ));
-    return;
   }
 
   getByName(episodeName: string): Observable<ApiRicksponse> {

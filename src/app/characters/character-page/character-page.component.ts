@@ -13,16 +13,11 @@ export class CharacterPageComponent implements OnInit {
   public character: Character;
   public episodes: Episode[];
 
-  constructor(private route: ActivatedRoute, private episodeService: EpisodesService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.data.subscribe((data: { character: Character }) => {
       this.character = data.character;
     });
   }
-
-  getEpisodes(): void {
-    this.episodes = this.episodeService.getEpisodes(this.character.episode);
-  }
-
 }
