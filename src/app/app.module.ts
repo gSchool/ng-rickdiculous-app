@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { EpisodesModule } from './episodes/episodes.module';
 import { CharactersModule } from './characters/characters.module';
+import { CharacterPageComponent } from './pages/character-page/character-page.component';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     SearchFormComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    CharacterPageComponent
   ],
   imports: [
     AppRoutingModule,
