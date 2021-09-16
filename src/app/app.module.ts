@@ -10,13 +10,15 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { EpisodesModule } from './episodes/episodes.module';
 import { CharactersModule } from './characters/characters.module';
 import { CharacterPageComponent } from './pages/character-page/character-page.component';
+import { EpisodePageComponent } from './pages/episode-page/episode-page.component';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     SearchFormComponent,
     SideMenuComponent,
-    CharacterPageComponent
+    CharacterPageComponent,
+    EpisodePageComponent
   ],
   imports: [
     AppRoutingModule,
@@ -25,9 +27,6 @@ import { CharacterPageComponent } from './pages/character-page/character-page.co
     HttpClientModule,
     EpisodesModule,
     CharactersModule
-  ],
-  exports: [
-    EpisodesModule
   ],
   providers: [],
   bootstrap: [ LandingPageComponent ]

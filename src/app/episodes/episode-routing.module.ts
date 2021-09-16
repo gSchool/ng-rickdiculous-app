@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EpisodesListComponent } from './episodes-list/episodes-list.component';
-import { EpisodePageComponent } from './episode-page/episode-page.component';
+import { EpisodePageComponent } from '../pages/episode-page/episode-page.component';
 import { EpisodeResolverService } from '../shared/episode-resolver.service';
 
 const routes: Routes = [
