@@ -48,6 +48,14 @@ export class EpisodesService {
     return this.http.get<Episode>(url);
   }
 
+  getListByUrls(urls: string[]): Observable<Episode[]> {
+    const episodes: Episode[] = [];
+    urls.map(url => (
+      this.getByUrl(url).subscribe( episode => episodes.push(episode))
+    ));
+    return of(episodes);
+  }
+
   getByName(episodeName: string): Observable<ApiRicksponse> {
     return this.http.get<ApiRicksponse>(`${this.url}?name=${episodeName}`)
       .pipe(

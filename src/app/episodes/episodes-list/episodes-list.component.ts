@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Episode } from '../../models/episode';
-import { EpisodesService } from '../../services/episodes.service';
+import {EpisodesService, episodesUrl} from '../../services/episodes.service';
 
 @Component({
   selector: 'app-episodes-list',
@@ -9,11 +9,17 @@ import { EpisodesService } from '../../services/episodes.service';
 })
 export class EpisodesListComponent implements OnInit {
   episodes: Episode[] = [];
+  @Input() episodeUrls!: string[];
 
   constructor(private service: EpisodesService) { }
 
+  // TODO: This component should simply receive a list of episodes without request for all()
   ngOnInit(): void {
-    this.service.all().subscribe(episodes => this.episodes = episodes.results );
+    if (this.episodeUrls) {
+      this.service.getListByUrls(this.episodeUrls).subscribe(episodes => this.episodes = episodes );
+    } else {
+      this.service.all().subscribe(episodes => this.episodes = episodes.results );
+    }
   }
 
 }
